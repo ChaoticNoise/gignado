@@ -27,7 +27,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'puma'
 
+# Authentication
 gem 'devise', '~> 3.5'
+gem 'omniauth-google-oauth2', '~> 0.2'
 
 
 group :development, :test do

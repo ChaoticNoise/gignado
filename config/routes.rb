@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  resources :events, :only => [:index]
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks"}
 
-  devise_scope :member do
-    root to: "devise/sessions#new"
-  end
+  root to: "events#index"
 end

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @gig.title %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @gig.status %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @gig.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @gig.end_time %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @gig.location %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @gig.details %>
+</p>
+
+<%= link_to 'Edit', edit_gig_path(@gig) %> |
+<%= link_to 'Back', events_path %>

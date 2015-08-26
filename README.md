@@ -12,3 +12,19 @@
 GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
 ```
+4. If Google is erring about a non registered redirect url, you'll need to add
+the one Google is complaining about to the gignado project in the google developers
+console.
+
+## Testing
+### Test with Color
+Install colordiff in order to allow colors in minitest using the purdytest gem
+```
+brew install colordiff
+```
+
+### Autotest and livereload browser using guard
+From the command line, run guard:
+```
+guard
+```

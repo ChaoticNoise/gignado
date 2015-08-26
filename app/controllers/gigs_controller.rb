@@ -69,6 +69,6 @@ class GigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_params
-      params.require(:gig).permit(:title, :status, :start_time, :end_time, :location, :details)
+      params.require(:gig).permit(:title, :status, :start_time, :end_time, :location, :details, :confirmation_deadline, :play_times, :payment)
     end
 end

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select :status, Gig.statuses.keys.to_a %>
   </div>
   <div class="field">
     <%= f.label :start_time %><br>

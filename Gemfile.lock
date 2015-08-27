@@ -241,6 +241,7 @@ DEPENDENCIES
   guard-minitest (~> 2.4)
   jbuilder (~> 2.0)
   jquery-rails
+  minitest (~> 5.8)
   omniauth-google-oauth2 (~> 0.2)
   pg
   puma

@@ -103,6 +103,7 @@ GEM
     hashie (3.4.2)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    icalendar (2.3.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -248,6 +249,7 @@ DEPENDENCIES
   guard (~> 2.13)
   guard-livereload (~> 2.4)
   guard-minitest (~> 2.4)
+  icalendar (~> 2.0)
   jbuilder (~> 2.0)
   jquery-rails
   minitest (~> 5.8)

@@ -13,4 +13,11 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:events)
   end
+  
+  test "should get index as calendar" do
+    get :index, format: :ics
+    assert_response :success
+    assert_not_nil assigns(:events)
+    assert_match(/#{CGI::escapeHTML(@event.title)}/, response.body)
+  end
 end

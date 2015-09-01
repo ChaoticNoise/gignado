@@ -31,6 +31,8 @@ gem 'puma'
 gem 'devise', '~> 3.5'
 gem 'omniauth-google-oauth2', '~> 0.2'
 
+# Calendar
+gem 'icalendar', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

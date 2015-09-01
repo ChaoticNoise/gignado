@@ -1,4 +1,8 @@
+require 'date_time_util'
+
 class Event < ActiveRecord::Base
+  include DateTimeUtil
+  
   serialize :data, HashSerializer
   
   validates :start_time, :end_time, presence: true

@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
-    @event = FactoryGirl.create(:event)
+    @event = FactoryGirl.create(:gig) # creating a gig here cause there are no routes for event stuff yet (oether than index)
     sign_in FactoryGirl.create(:member)
   end
 

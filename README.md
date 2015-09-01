@@ -2,7 +2,7 @@
 
 ## Setup Instructions
 ### Setup Google Auth Environment Variables
-1. Find the Client ID and Client Secret values in
+1. Find the Client ID and Client Secret values in (for app owner, currently band@chaoticnoise.com "gignado" project)
   -  https://console.developers.google.com
   -  APIs & auth
   -  Credentials

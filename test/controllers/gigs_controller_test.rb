@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class GigsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
-    @gig = gigs(:one)
+    @gig = FactoryGirl.create(:gig)
+#    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    sign_in FactoryGirl.create(:member)
   end
 
   test "should get new" do

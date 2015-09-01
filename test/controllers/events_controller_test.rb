@@ -2,7 +2,8 @@ require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
   setup do
-    @event = events(:one)
+    @event = FactoryGirl.create(:event)
+    sign_in FactoryGirl.create(:member)
   end
 
   test "should get index" do

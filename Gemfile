@@ -50,4 +50,8 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4'
   gem 'purdytest'
   gem 'rack-livereload'
+  
+  # Test data
+  gem "faker", "~> 1.5"
+  gem "factory_girl_rails", "~> 4.0"
 end

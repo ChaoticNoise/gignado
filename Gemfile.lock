@@ -103,6 +103,7 @@ GEM
     hashie (3.4.2)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    icalendar (2.3.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -124,6 +125,9 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
+    minitest-byebug (0.0.3)
+      byebug
+      minitest (~> 5.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -248,9 +252,11 @@ DEPENDENCIES
   guard (~> 2.13)
   guard-livereload (~> 2.4)
   guard-minitest (~> 2.4)
+  icalendar (~> 2.0)
   jbuilder (~> 2.0)
   jquery-rails
   minitest (~> 5.8)
+  minitest-byebug
   omniauth-google-oauth2 (~> 0.2)
   pg
   puma

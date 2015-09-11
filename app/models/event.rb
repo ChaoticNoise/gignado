@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   
   serialize :data, HashSerializer
   
-  store_accessor :data, :uid
+  store_accessor :data, :uid, :points
 
   validates :start_time, :end_time, :title, presence: true
   validate :start_before_end

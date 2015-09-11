@@ -28,3 +28,20 @@ From the command line, run guard:
 ```
 guard
 ```
+
+## Login First Time
+
+Seed Database with admin user:
+```
+bundle exec rake db:seed
+```
+
+The database is seeded with the following credentials:
+- email: admin@gignado.com
+- password: admin
+
+
+After logging in, change your admin password by opening:
+```
+http://localhost:3000/members/edit
+```

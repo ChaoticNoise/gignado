@@ -9,6 +9,8 @@ module DateTimeUtil
       val.to_datetime
     when val.is_a?(Date)
       val.to_datetime
+    when val.is_a?(Hash)
+      DateTime.new(*val.values)
     end
   end
 end

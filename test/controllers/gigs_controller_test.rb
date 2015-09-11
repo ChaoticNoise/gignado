@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GigsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
-  
+
   setup do
     @gig = FactoryGirl.create(:gig)
 #    @request.env["devise.mapping"] = Devise.mappings[:admin]

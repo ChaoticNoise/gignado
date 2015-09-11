@@ -21,4 +21,12 @@ class Member < ActiveRecord::Base
     end
     member
   end
+
+  def is_active
+    !self.activated_at.nil?
+  end
+
+  def is_active=(val)
+    self.activated_at = (val.to_i == 1 ? Time.now : nil)
+  end
 end

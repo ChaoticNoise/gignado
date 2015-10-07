@@ -5,5 +5,11 @@ Rails.application.routes.draw do
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks"}
   resources :members, :only => [:index, :edit, :update]
 
+  resources :errors, :only => [] do
+    collection do
+      get 'inactive'
+    end
+  end
+
   root to: "events#index"
 end

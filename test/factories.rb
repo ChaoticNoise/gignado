@@ -3,6 +3,7 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
+    activated_at { Time.now() }
     pwd = Faker::Internet.password(8)
     password pwd
     password_confirmation pwd

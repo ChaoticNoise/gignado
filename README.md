@@ -38,7 +38,7 @@ bundle exec rake db:seed
 
 The database is seeded with the following credentials:
 - email: admin@gignado.com
-- password: admin
+- password: adminado
 
 
 After logging in, change your admin password by opening:

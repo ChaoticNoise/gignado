@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.5'
+# navigation
+gem 'simple-navigation', '~> 4.0.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -53,7 +55,7 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4'
   gem 'purdytest'
   gem 'rack-livereload'
-  
+
   # Test data
   gem "faker", "~> 1.5"
   gem "factory_girl_rails", "~> 4.0"

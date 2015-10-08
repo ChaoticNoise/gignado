@@ -8,7 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
+<%- if member_signed_in? && current_member.is_active %>
+  <%= render partial: '/shared/navbar_signed_in' %>
+<%- else %>
+  <%= render partial: 'shared/navbar_signed_out' %>
+<%- end %>
+
+
+
 <div class="container">
   <%= yield %>
 </div>

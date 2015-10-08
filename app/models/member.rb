@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class Member < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -20,6 +22,20 @@ class Member < ActiveRecord::Base
         password: Devise.friendly_token[0,20])
     end
     member
+  end
+
+  def image_url
+    read_attribute(:image_url) || gravatar_image_url()
+  end
+
+  def gravatar_image_url
+    hash = Digest::MD5.hexdigest(self.email.downcase)
+    default_style = 'retro'
+    "http://www.gravatar.com/avatar/#{hash}?d=#{default_style}"
+  end
+
+  def display_name
+    self.first_name
   end
 
   def is_active

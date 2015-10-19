@@ -1,8 +1,6 @@
 <%= simple_form_for(@gig) do |f| %>
   <% if @gig.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <%= pluralize(@gig.errors.count, "error") %> prohibited this gig from being saved.
-    </div>
+    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@gig.errors.count, 'error')} prohibited this gig from being saved." } %>
   <% end %>
 
   <%= f.input :title %>
@@ -10,10 +8,10 @@
 
   <div class="row">
     <div class="col-md-6">
-      <%= f.input :start_time, as: :datetime, ampm: true %>
+      <%= f.input :start_time, as: :datetime %>
     </div>
     <div class="col-md-6">
-      <%= f.input :end_time, as: :datetime, ampm: true %>
+      <%= f.input :end_time, as: :datetime %>
     </div>
   </div>
 

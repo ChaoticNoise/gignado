@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%- if notice.present? %>
+  <%= render partial: 'shared/alerts', locals: { type: 'success', text: notice } %>
+<% end %>
 
 <h2>Events</h2>
 <hr/>

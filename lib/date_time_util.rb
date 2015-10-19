@@ -1,5 +1,7 @@
 module DateTimeUtil
   def to_date_time(val)
+    return unless val.present?
+
     case
     when val.is_a?(DateTime)
       val

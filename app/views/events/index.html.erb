@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<h2>Events</h2>
+<hr/>
 
 <div class="table-responsive">
   <table class="table">
@@ -11,9 +12,7 @@
         <th>Status</th>
         <th>Start time</th>
         <th>End time</th>
-        <th>Location</th>
-        <th>Details</th>
-        <th colspan="3"></th>
+        <th colspan="2"></th>
       </tr>
     </thead>
 
@@ -21,23 +20,32 @@
       <% @events.each do |event| %>
         <tr>
           <td><%= event.type %></td>
-          <td><%= event.title %></td>
-          <td><%= event.status %></td>
-          <td><%= event.start_time %></td>
-          <td><%= event.end_time %></td>
-          <td><%= event.location %></td>
-          <td><%= event.details %></td>
-          <td><%= link_to 'Show', event %></td>
+          <td>
+            <%= link_to event do %>
+              <%= event.title %>
+            <% end %>
+          </td>
+          <td><span class="status-<%= event.status %>"><%= event.status %></span></td>
+          <td><%= event.start_time.strftime("%b %d, %Y %I:%M%P") %></td>
+          <td><%= event.end_time.strftime("%b %d, %Y %I:%M%P") %></td>
           <%- if event.is_a? Gig %>
-            <td><%= link_to 'Edit', edit_gig_path(event) %></td>
+            <td>
+              <%= link_to edit_gig_path(event) do %>
+                <%= fa_icon "pencil" %>
+              <% end %>
+            </td>
           <% end %>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= fa_icon "trash" %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
-<br>
+<hr/>
 
-<%= link_to 'New Gig', new_gig_path %>
+<%= link_to 'New Gig', new_gig_path, class: "btn btn-primary pull-right" %>

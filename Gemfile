@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.5'
+
+gem 'font-awesome-rails', '~> 4.4.0'
 # navigation
 gem 'simple-navigation', '~> 4.0.3'
 

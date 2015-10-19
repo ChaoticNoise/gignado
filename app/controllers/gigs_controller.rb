@@ -56,7 +56,7 @@ class GigsController < ApplicationController
   def destroy
     @gig.destroy
     respond_to do |format|
-      format.html { redirect_to gigs_url, notice: 'Gig was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: 'Gig was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

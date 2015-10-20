@@ -2,14 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table {
-  .status-confirmed {
-    color: white;
-    background-color: green;
-  }
 
-  .status-canceled {
-    color: white;
-    background-color: red;
-  }
+.status-potential {
+  color: #FFA500;
+}
+
+.status-confirmed {
+  color: #008000;
+}
+
+.status-canceled {
+  color: #FF0000;
+}
+
+
+.col-fixed-icon {
+  width: 1em;
 }

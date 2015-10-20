@@ -6,38 +6,32 @@
 <hr/>
 
 <div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Start time</th>
-        <th>End time</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
+  <table class="table table-striped">
     <tbody>
       <% @events.each do |event| %>
-        <tr>
-          <td><%= event.type %></td>
-          <td>
+        <tr class="row">
+          <td class="col-fixed-icon" >
+            <%= fa_icon event_type_to_icon(event.type), data: {toggle: 'tooltip', placement:'bottom'}, title: event.type %>
+          </td>
+          <td class="col-md-2 col-sm-2 col-xs-2"><%= event.start_time.strftime("%b %d, %Y %I:%M%P") %></td>
+          <td class="col-fixed-icon">
+            <span class="status status-<%= event.status %>">
+              <%= fa_icon event_status_to_icon(event.status), data: {toggle: 'tooltip', placement:'bottom'}, title: event.status %>
+            </span>
+          </td>
+          <td class="col-md-9">
             <%= link_to event do %>
               <%= event.title %>
             <% end %>
           </td>
-          <td><span class="status-<%= event.status %>"><%= event.status %></span></td>
-          <td><%= event.start_time.strftime("%b %d, %Y %I:%M%P") %></td>
-          <td><%= event.end_time.strftime("%b %d, %Y %I:%M%P") %></td>
           <%- if event.is_a? Gig %>
-            <td>
+            <td class="col-fixed-icon">
               <%= link_to edit_gig_path(event) do %>
                 <%= fa_icon "pencil" %>
               <% end %>
             </td>
           <% end %>
-          <td>
+          <td class="col-fixed-icon">
             <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
               <%= fa_icon "trash" %>
             <% end %>

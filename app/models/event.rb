@@ -12,6 +12,8 @@ class Event < ActiveRecord::Base
 
   before_save :confirm_uid
 
+  scope :upcoming, -> { where("end_time > ?", Date.today + 1.day) }
+
   def self.ical(events)
     cal = Icalendar::Calendar.new
     events.each { |e| cal.add_event(e.ical_event) }

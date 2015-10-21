@@ -37,8 +37,14 @@
   </div>
 
 
-  <%= f.input :merch_needs %>
-  <%= f.input :plus_ones_allowed, as: :boolean %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= f.input :merch_needs, as: :boolean %>
+    </div>
+    <div class="col-md-2">
+      <%= f.input :plus_ones_allowed, as: :boolean %>
+    </div>
+  </div>
 
   <hr/>
 

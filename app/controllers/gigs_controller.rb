@@ -1,12 +1,6 @@
 class GigsController < ApplicationController
   before_action :set_gig, only: [:show, :edit, :update, :destroy]
 
-  # GET /gigs
-  # GET /gigs.json
-  def index
-    @gigs = Gig.all
-  end
-
   # GET /gigs/1
   # GET /gigs/1.json
   def show

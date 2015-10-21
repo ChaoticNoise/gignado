@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ansi (1.5.0)
     arel (6.0.3)
     autoprefixer-rails (5.2.1.2)
       execjs
@@ -127,6 +128,11 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
+    minitest-reporters (1.1.4)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -158,8 +164,6 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (2.13.4)
-    purdytest (2.0.0)
-      minitest (~> 5.5)
     rack (1.6.4)
     rack-livereload (0.3.16)
       rack
@@ -201,6 +205,7 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    ruby-progressbar (1.7.5)
     sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -261,10 +266,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   minitest (~> 5.8)
+  minitest-reporters (~> 1.1)
   omniauth-google-oauth2 (~> 0.2)
   pg
   puma
-  purdytest
   rack-livereload
   rails (= 4.2.3)
   rails_12factor

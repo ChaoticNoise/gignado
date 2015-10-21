@@ -57,7 +57,7 @@ group :development, :test do
   gem 'guard', '~> 2.13'
   gem 'guard-minitest', '~> 2.4'
   gem 'guard-livereload', '~> 2.4'
-  gem 'purdytest'
+  gem 'minitest-reporters', '~> 1.1'
   gem 'rack-livereload'
 
   # Test data

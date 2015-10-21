@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  match '/check(.json)' => 'status#check', :via => :get
+
   root to: "events#index"
 end

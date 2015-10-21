@@ -101,5 +101,7 @@
 <hr/>
 
 <div class="pull-right">
-  <%= link_to 'Edit', edit_gig_path(@gig), class: 'btn btn-primary' %>
+  <%= link_to edit_gig_path(@gig), class: 'btn btn-primary' do %>
+    <%= fa_icon 'pencil' %> Edit Gig
+  <% end %>
 </div>

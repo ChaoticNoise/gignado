@@ -44,4 +44,6 @@
 
 <hr/>
 
-<%= link_to 'New Gig', new_gig_path, class: "btn btn-primary pull-right" %>
+<%= link_to new_gig_path, class: "btn btn-primary pull-right" do %>
+  <%= fa_icon 'plus' %> New Gig
+<% end %>

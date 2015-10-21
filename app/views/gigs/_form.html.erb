@@ -7,10 +7,10 @@
   <%= f.input :details %>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-xs-6">
       <%= f.input :start_time, as: :datetime, ampm: true %>
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-6">
       <%= f.input :end_time, as: :datetime, ampm: true %>
     </div>
   </div>
@@ -18,30 +18,30 @@
   <%= f.input :location %>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-xs-6">
       <%= f.input :confirmation_deadline, as: :date %>
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-6">
       <%= f.input :status, collection: Gig.statuses.keys.to_a %>
     </div>
   </div>
 
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-xs-6">
       <%= f.input :payment %>
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-6">
       <%= f.input :payment_status, collection: Gig.payment_statuses.keys.to_a %>
     </div>
   </div>
 
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.input :merch_needs, as: :boolean %>
     </div>
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.input :plus_ones_allowed, as: :boolean %>
     </div>
   </div>

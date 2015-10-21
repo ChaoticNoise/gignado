@@ -12,10 +12,10 @@
 
 <div class="event-data">
   <div class="row">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Status
     </div>
-    <div class="col-md-9 event-value">
+    <div class="col-sm-9 event-value">
       <span class="status status-<%= @gig.status %>">
         <%= fa_icon event_status_to_icon(@gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: @gig.status %>
       </span>
@@ -24,37 +24,37 @@
   </div>
 
   <div class="row event-data">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Start Time
     </div>
-    <div class="col-md-9 event-value">
+    <div class="col-sm-9 event-value">
       <%= @gig.start_time.strftime("%b %d, %Y %I:%M%P") %>
     </div>
   </div>
 
   <div class="row event-data">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       End Time
     </div>
-    <div class="col-md-9 event-value">
+    <div class="col-sm-9 event-value">
       <%= @gig.end_time.strftime("%b %d, %Y %I:%M%P") %>
     </div>
   </div>
 
   <div class="row event-data">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Confirmation Deadline
     </div>
-    <div class="col-md-9 event-value">
+    <div class="col-sm-9 event-value">
       <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") %>
     </div>
   </div>
 
   <div class="row event-data">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Payment
     </div>
-    <div class="col-md-9 event-value">
+    <div class="col-sm-9 event-value">
 
       <%- if @gig.payment.present? %><p><%= @gig.payment %></p><% end %>
       <p><%= @gig.payment_status %></p>
@@ -62,37 +62,37 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Location
     </div>
-    <div class="col-md-9 event-value" >
+    <div class="col-sm-9 event-value" >
       <a href="https://maps.google.com?q=<%= @gig.location %>" target="_blank"><%= @gig.location %></a>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Merch Needs
     </div>
-    <div class="col-md-9 event-value" >
+    <div class="col-sm-9 event-value" >
       <%= @gig.merch_needs ? 'yes' : 'no' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Plus Ones Allowed
     </div>
-    <div class="col-md-9 event-value" >
+    <div class="col-sm-9 event-value" >
       <%= @gig.plus_ones_allowed ? 'yes' : 'no' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-3 event-label">
+    <div class="col-sm-3 event-label">
       Details
     </div>
-    <div class="col-md-9 event-value">
+    <div class="col-sm-9 event-value">
       <%= @gig.details %>
     </div>
   </div>

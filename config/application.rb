@@ -22,5 +22,15 @@ module Gignado
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Specifiy Devise layouts
+    # (see: https://github.com/plataformatec/devise/wiki/How-To%3a-Create-custom-layouts)
+    config.to_prepare do
+      Devise::SessionsController.layout proc{ |controller| member_signed_in? ? "application" : "not_signed_in" }
+      Devise::RegistrationsController.layout proc{ |controller| member_signed_in? ? "application" : "not_signed_in" }
+      Devise::ConfirmationsController.layout proc{ |controller| member_signed_in? ? "application" : "not_signed_in" }
+      Devise::UnlocksController.layout proc{ |controller| member_signed_in? ? "application" : "not_signed_in" }
+      Devise::PasswordsController.layout proc{ |controller| member_signed_in? ? "application" : "not_signed_in" }
+    end
   end
 end

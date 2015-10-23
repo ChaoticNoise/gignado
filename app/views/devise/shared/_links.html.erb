@@ -28,7 +28,7 @@
       <%= link_to omniauth_authorize_path(resource_name, provider) do %>
         <hr>
         <% if provider.to_s == 'google_oauth2' %>
-          <%= image_tag image_url('google-sign-in-button.png'), alt: provider.to_s.titleize, width: '180' %>
+          <%= image_tag image_url('google-sign-in-button.png'), alt: provider.to_s.titleize, class: "img-responsive" %>
         <% else %>
           <strong><%= "Sign in with #{provider.to_s.titleize}" %></strong>
         <% end %>

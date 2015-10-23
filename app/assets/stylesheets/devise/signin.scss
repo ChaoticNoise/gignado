@@ -1,0 +1,23 @@
+body {
+  background-image:image-url('signin-tornado.jpg');
+  background-repeat:no-repeat;
+  background-size: 100%;
+  background-color: #222222;
+}
+
+.panel-default > .panel-heading {
+  color: white;
+  font-size: 18px; 
+  background-color: rgba(34, 34, 34, 0.75);
+}
+
+.panel {
+  position: absolute;
+  margin-top: 1.5em;
+  background-color: rgba(255,255,255, 0.5);
+  transform: traslateY(-50%);
+
+  .center {
+    text-align: center;
+  }
+}

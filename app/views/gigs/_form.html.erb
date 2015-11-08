@@ -1,61 +1,55 @@
-<%= form_for(@gig) do |f| %>
+<%= simple_form_for(@gig) do |f| %>
   <% if @gig.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@gig.errors.count, "error") %> prohibited this gig from being saved:</h2>
-
-      <ul>
-      <% @gig.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@gig.errors.count, 'error')} prohibited this gig from being saved." } %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <%= f.input :title %>
+  <%= f.input :details %>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :start_time, as: :datetime, ampm: true %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :end_time, as: :datetime, ampm: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.select :status, Gig.statuses.keys.to_a %>
+
+  <%= f.input :location %>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :confirmation_deadline, as: :date %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :status, collection: Gig.statuses.keys.to_a %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
+
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :payment %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :payment_status, collection: Gig.payment_statuses.keys.to_a %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
+
+
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.input :merch_needs, as: :boolean %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.input :plus_ones_allowed, as: :boolean %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :confirmation_deadline %><br>
-    <%= f.datetime_select :confirmation_deadline %>
-  </div>
-  <div class="field">
-    <%= f.label :payment %><br>
-    <%= f.text_field :payment %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_status %><br>
-    <%= f.select :payment_status, Gig.payment_statuses.keys.to_a %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br>
-    <%= f.text_area :details %>
-  </div>
-  <div class="field">
-    <%= f.label :merch_needs %><br>
-    <%= f.text_field :merch_needs %>
-  </div>
-  <div class="field">
-    <%= f.label :plus_ones_allowed %><br>
-    <%= f.text_field :plus_ones_allowed %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <hr/>
+
+  <div class="pull-right">
+    <%= link_to 'Cancel', events_path, class: "btn" %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

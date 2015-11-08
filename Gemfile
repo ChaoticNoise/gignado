@@ -16,6 +16,13 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.5'
 
+gem 'font-awesome-rails', '~> 4.4.0'
+# navigation
+gem 'simple-navigation', '~> 4.0.3'
+
+# form gems
+gem 'simple_form', '~> 3.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -45,15 +52,14 @@ group :development, :test do
   gem 'spring'
 
   gem 'minitest', '~> 5.8'
-  gem 'minitest-byebug'
 
   # Auto handle events on filesystem modifications
   gem 'guard', '~> 2.13'
   gem 'guard-minitest', '~> 2.4'
   gem 'guard-livereload', '~> 2.4'
-  gem 'purdytest'
+  gem 'minitest-reporters', '~> 1.1'
   gem 'rack-livereload'
-  
+
   # Test data
   gem "faker", "~> 1.5"
   gem "factory_girl_rails", "~> 4.0"

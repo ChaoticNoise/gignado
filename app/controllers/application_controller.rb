@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_member!
+  before_action :authenticate_active_member!
 
   protected
 
-  def authenticate
-
+  def authenticate_active_member!
+    redirect_to inactive_errors_path unless current_member.nil? || current_member.is_active
   end
 end

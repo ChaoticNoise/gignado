@@ -1,7 +1,8 @@
 
 # Seed Database with admin user(nado)
-Member.create(
+Member.create!(
   email: 'admin@gignado.com',
-  password: 'admin',
+  password: 'adminado',
   first_name: 'Admin',
-  last_name: 'Nado')
+  last_name: 'Nado',
+  activated_at: Time.now)

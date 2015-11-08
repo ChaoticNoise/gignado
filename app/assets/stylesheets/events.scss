@@ -1,3 +1,35 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.status-potential {
+  color: #FFA500;
+}
+
+.status-confirmed {
+  color: #008000;
+}
+
+.status-canceled {
+  color: #FF0000;
+}
+
+
+.col-fixed-icon {
+  width: 1em;
+}
+
+.event-data {
+  .row {
+    padding-bottom: 10px;
+  }
+
+  .event-label {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .event-value {
+  }
+}

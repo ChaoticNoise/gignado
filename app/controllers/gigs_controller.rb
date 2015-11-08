@@ -1,12 +1,6 @@
 class GigsController < ApplicationController
   before_action :set_gig, only: [:show, :edit, :update, :destroy]
 
-  # GET /gigs
-  # GET /gigs.json
-  def index
-    @gigs = Gig.all
-  end
-
   # GET /gigs/1
   # GET /gigs/1.json
   def show
@@ -56,7 +50,7 @@ class GigsController < ApplicationController
   def destroy
     @gig.destroy
     respond_to do |format|
-      format.html { redirect_to gigs_url, notice: 'Gig was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: 'Gig was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +63,8 @@ class GigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_params
-      params.require(:gig).permit(:title, :status, :start_time, :end_time, :location, :details, :confirmation_deadline, :play_times, :payment)
+      params.require(:gig).permit(:title, :status, :start_time, :end_time,
+      :location, :details, :confirmation_deadline, :play_times, :payment,
+      :payment_status, :plus_ones_allowed, :merch_needs)
     end
 end

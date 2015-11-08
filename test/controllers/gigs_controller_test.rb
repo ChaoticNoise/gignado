@@ -42,6 +42,6 @@ class GigsControllerTest < ActionController::TestCase
       delete :destroy, id: @gig
     end
 
-    assert_redirected_to gigs_path
+    assert_redirected_to events_path
   end
 end

@@ -1,44 +1,107 @@
-<p id="notice"><%= notice %></p>
+<%- if notice.present? %>
+  <%= render partial: 'shared/alerts', locals: { type: 'success', text: notice } %>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @gig.title %>
-</p>
+<div class="page-header">
+  <h2>
+    <%= fa_icon event_type_to_icon(@gig.type), data: {toggle: 'tooltip', placement:'bottom'}, title: @gig.type %>
+    &nbsp;
+    <%= @gig.title %>
+  </h2>
+</div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @gig.status %>
-</p>
+<div class="event-data">
+  <div class="row">
+    <div class="col-sm-3 event-label">
+      Status
+    </div>
+    <div class="col-sm-9 event-value">
+      <span class="status status-<%= @gig.status %>">
+        <%= fa_icon event_status_to_icon(@gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: @gig.status %>
+      </span>
+      <%= @gig.status %>
+    </div>
+  </div>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @gig.start_time %>
-</p>
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      Start Time
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.start_time.strftime("%b %d, %Y %I:%M%P") %>
+    </div>
+  </div>
 
-<p>
-  <strong>End time:</strong>
-  <%= @gig.end_time %>
-</p>
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      End Time
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.end_time.strftime("%b %d, %Y %I:%M%P") %>
+    </div>
+  </div>
 
-<p>
-  <strong>Confirmation Deadline:</strong>
-  <%= @gig.confirmation_deadline %>
-</p>
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      Confirmation Deadline
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") %>
+    </div>
+  </div>
 
-<p>
-  <strong>Payment:</strong>
-  <%= @gig.payment %>
-</p>
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      Payment
+    </div>
+    <div class="col-sm-9 event-value">
 
-<p>
-  <strong>Location:</strong>
-  <%= @gig.location %>
-</p>
+      <%- if @gig.payment.present? %><p><%= @gig.payment %></p><% end %>
+      <p><%= @gig.payment_status %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Details:</strong>
-  <%= @gig.details %>
-</p>
+  <div class="row">
+    <div class="col-sm-3 event-label">
+      Location
+    </div>
+    <div class="col-sm-9 event-value" >
+      <a href="https://maps.google.com?q=<%= @gig.location %>" target="_blank"><%= @gig.location %></a>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_gig_path(@gig) %> |
-<%= link_to 'Back', events_path %>
+  <div class="row">
+    <div class="col-sm-3 event-label">
+      Merch Needs
+    </div>
+    <div class="col-sm-9 event-value" >
+      <%= @gig.merch_needs ? 'yes' : 'no' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 event-label">
+      Plus Ones Allowed
+    </div>
+    <div class="col-sm-9 event-value" >
+      <%= @gig.plus_ones_allowed ? 'yes' : 'no' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 event-label">
+      Details
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.details %>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<div class="pull-right">
+  <%= link_to edit_gig_path(@gig), class: 'btn btn-primary' do %>
+    <%= fa_icon 'pencil' %> Edit Gig
+  <% end %>
+</div>

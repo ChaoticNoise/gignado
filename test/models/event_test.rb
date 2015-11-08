@@ -5,14 +5,14 @@ class EventTest < ActiveSupport::TestCase
     gig = FactoryGirl.build(:event, :start_time => Time.now() + 2.hours, :end_time => Time.now() + 1.hour)
     assert !gig.valid?, "Event should not be valid ending before it starts!"
   end
-  
+
   test "converts formats into DateTime properly" do
     e = Event.new
     dt = DateTime.new(2015,8,31,22,32,0)
     assert_equal(dt, e.to_date_time("2015-08-31T22:32:00.000"), "String input should match DateTime")
     assert_equal(dt.utc, e.to_date_time(Time.utc(2015,8,31,22,32,0)), "Time input should match DateTime")
   end
-  
+
   test "should make correct ical string" do
     s = DateTime.new(2015,9,1,10,0,0)
     e = s + 1.hour
@@ -27,7 +27,7 @@ class EventTest < ActiveSupport::TestCase
     event.uid = "12341234"
     assert_match(/#{before_uid}\d+T\d+Z\r\nUID:12341234#{after_uid}/, event.to_ical)
   end
-  
+
   test "event uid should persist" do
     event = FactoryGirl.build(:event)
     uid = event.ical_event.uid
@@ -35,7 +35,7 @@ class EventTest < ActiveSupport::TestCase
     event = Event.find(event.id)
     assert_equal(uid, event.ical_event.uid)
   end
-  
+
   test "makes calendar from events" do
     events = [FactoryGirl.build(:gig),FactoryGirl.build(:gig),FactoryGirl.build(:gig),FactoryGirl.build(:gig)]
     ical = Event.ical(events)

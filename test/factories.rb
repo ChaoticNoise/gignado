@@ -1,4 +1,9 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :role do
+    title 1
+event nil
+member nil
+  end
+
   factory :member do
     email { Faker::Internet.email }
     first_name { Faker::Name.first_name }

@@ -1,5 +1,5 @@
 class Gig < Event
-  store_accessor :data, :confirmation_deadline, :play_times, :payment, :payment_status, :booker, :day_pic,
+  store_accessor :data, :confirmation_deadline, :play_times, :payment, :payment_status, :booker_id, :day_pic_id,
 #    :is_public, :public_start, :public_end, :public_title, :public_description, :public_location,
     :plus_ones_allowed, :merch_needs
   enum status: {potential: 0, confirmed: 1, canceled: 2}

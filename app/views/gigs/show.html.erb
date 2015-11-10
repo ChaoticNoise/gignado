@@ -52,6 +52,42 @@
 
   <div class="row event-data">
     <div class="col-sm-3 event-label">
+      Booker
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.booker %>
+    </div>
+  </div>
+
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      Day PIC
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.day_pic %>
+    </div>
+  </div>
+
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      Gig PIC
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.gig_pic %>
+    </div>
+  </div>
+
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
+      Bus PIC
+    </div>
+    <div class="col-sm-9 event-value">
+      <%= @gig.bus_pic %>
+    </div>
+  </div>
+
+  <div class="row event-data">
+    <div class="col-sm-3 event-label">
       Payment
     </div>
     <div class="col-sm-9 event-value">
@@ -75,7 +111,7 @@
       Merch Needs
     </div>
     <div class="col-sm-9 event-value" >
-      <%= @gig.merch_needs ? 'yes' : 'no' %>
+      <%= @gig.merch_needs!='0' ? 'yes' : 'no' %>
     </div>
   </div>
 
@@ -84,7 +120,7 @@
       Plus Ones Allowed
     </div>
     <div class="col-sm-9 event-value" >
-      <%= @gig.plus_ones_allowed ? 'yes' : 'no' %>
+      <%= @gig.plus_ones_allowed!='0' ? 'yes' : 'no' %>
     </div>
   </div>
 

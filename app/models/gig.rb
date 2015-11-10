@@ -1,10 +1,12 @@
 class Gig < Event
-  store_accessor :data, :confirmation_deadline, :play_times, :payment, :payment_status, :booker_id, :day_pic_id,
-#    :is_public, :public_start, :public_end, :public_title, :public_description, :public_location,
-    :plus_ones_allowed, :merch_needs
-
+  store_accessor :data, :payment, :plus_ones_allowed, :merch_needs
   enum status: {potential: 0, confirmed: 1, canceled: 2}
   enum payment_status: {negotiation: 0, agreed: 1, overdue: 2, paid: 3, waived: 4}
+  
+  belongs_to :booker, class_name: "Member"
+  belongs_to :day_pic, class_name: "Member"
+  belongs_to :gig_pic, class_name: "Member"
+  belongs_to :bus_pic, class_name: "Member"
 
   validate :confirmation_before_start
 

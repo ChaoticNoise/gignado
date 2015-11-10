@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021034613) do
+ActiveRecord::Schema.define(version: 20151110043346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20151021034613) do
     t.integer  "status",                default: 0
     t.datetime "confirmation_deadline"
     t.integer  "payment_status",        default: 0
+    t.integer  "booker_id"
+    t.integer  "day_pic_id"
+    t.integer  "gig_pic_id"
+    t.integer  "bus_pic_id"
+    t.integer  "rehearsal_pic_id"
   end
 
   add_index "events", ["data"], name: "index_events_on_data", using: :gin
@@ -55,18 +60,4 @@ ActiveRecord::Schema.define(version: 20151021034613) do
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
-  create_table "roles", force: :cascade do |t|
-    t.integer  "title",      null: false
-    t.integer  "event_id",   null: false
-    t.integer  "member_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "roles", ["event_id"], name: "index_roles_on_event_id", using: :btree
-  add_index "roles", ["member_id"], name: "index_roles_on_member_id", using: :btree
-  add_index "roles", ["title", "event_id", "member_id"], name: "index_roles_on_title_and_event_id_and_member_id", unique: true, using: :btree
-
-  add_foreign_key "roles", "events"
-  add_foreign_key "roles", "members"
 end

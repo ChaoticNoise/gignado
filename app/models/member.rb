@@ -45,4 +45,8 @@ class Member < ActiveRecord::Base
   def is_active=(val)
     self.activated_at = (val.to_i == 1 ? Time.now : nil)
   end
+  
+  def to_s
+    self.display_name.blank? ? self.email : self.display_name
+  end
 end

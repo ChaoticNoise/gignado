@@ -7,6 +7,12 @@ class Member < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
+  has_many :booker_events, class_name: 'Event', foreign_key: 'booker_id', dependent: :nullify
+  has_many :day_pic_events, class_name: 'Event', foreign_key: 'day_pic_id', dependent: :nullify
+  has_many :gig_pic_events, class_name: 'Event', foreign_key: 'gig_pic_id', dependent: :nullify
+  has_many :bus_pic_events, class_name: 'Event', foreign_key: 'bus_pic_id', dependent: :nullify
+  has_many :rehearsal_pic_events, class_name: 'Event', foreign_key: 'rehearsal_pic_id', dependent: :nullify
+
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
@@ -45,7 +51,7 @@ class Member < ActiveRecord::Base
   def is_active=(val)
     self.activated_at = (val.to_i == 1 ? Time.now : nil)
   end
-  
+
   def to_s
     self.display_name.blank? ? self.email : self.display_name
   end

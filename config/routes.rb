@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     namespace 'v1' do
-      resources :bots, only: [:show]
+      resources :bots, only: [] do
+        collection do
+          post :slack
+        end
+      end
     end
   end
 

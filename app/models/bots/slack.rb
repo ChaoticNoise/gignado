@@ -47,13 +47,13 @@ class Bots::Slack
 
   def help_response
     r = []
-    r << "gignado \t\t displays this help"
-    r << "gignado (a)ll \t\t all upcoming events"
-    r << "gignado (f)ind \t\t find events with query in title"
-    r << "gignado (h)elp \t\t displays this help"
-    r << "gignado (l)ist \t\t list upcoming confirmed events"
-    r << "gignado (n)ext \t\t shows the next confirmed event"
-    r << "gignado (t)oday \t\t list confirmed events today"
+    r << "- gignado         displays this help"
+    r << "- gignado (a)ll   all upcoming events"
+    r << "- gignado (f)ind  find events with query in title"
+    r << "- gignado (h)elp  displays this help"
+    r << "- gignado (l)ist  list upcoming confirmed events"
+    r << "- gignado (n)ext  shows the next confirmed event"
+    r << "- gignado (t)oday list confirmed events today"
     r.join("\n")
   end
 

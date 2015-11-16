@@ -95,7 +95,7 @@ class Bots::Slack
     f << "<#{event.url}|#{event.title}>"
     if event.location.present?
       location_query = { q: event.location }.to_query
-      f << "<https://maps.google.com?#{location_query}|:world_map:>"
+      f << "<https://maps.google.com?#{location_query}|map>"
     end
     f.join(" | ")
   end

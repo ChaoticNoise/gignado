@@ -70,11 +70,11 @@ class Bots::Slack
 
   def status_icon(status)
     case status
-    when :potential
+    when 'potential'
       ':grey_question:'
-    when :canceled
+    when 'canceled'
       ':x:'
-    when :confirmed
+    when 'confirmed'
       ':white_check_mark:'
     else
       status
@@ -93,7 +93,10 @@ class Bots::Slack
     f << status_icon(event.status)
     f << event.start_time.strftime("%b %d, %Y %I:%M%P")
     f << "<#{event.url}|#{event.title}>"
-    f << "<https://maps.google.com?q=#{event.location}|:world_map:>" if event.location.present?
+    if event.location.present?
+      location_query = { q: event.location }.to_query
+      f << "<https://maps.google.com?#{location_query}|:world_map:>"
+    end
     f.join(" | ")
   end
 

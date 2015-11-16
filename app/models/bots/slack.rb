@@ -57,7 +57,28 @@ class Bots::Slack
     r << "  today   list confirmed events today"
     r << "```"
     r.join("\n")
+  end
 
+  def type_icon(type)
+    case type
+    when 'Gig'
+      ':musical_note:'
+    else
+      type
+    end
+  end
+
+  def status_icon(status)
+    case status
+    when :potential
+      ':grey_question:'
+    when :canceled
+      ':x:'
+    when :confirmed
+      ':white_check_mark:'
+    else
+      status
+    end
   end
 
   def format_multi_events(events)
@@ -68,10 +89,11 @@ class Bots::Slack
     return "" if event.nil?
     event.base_url = @base_url
     f = []
-    f << event.type.titleize
-    f << event.status
+    f << type_icon(event.type)
+    f << status_icon(event.status)
     f << event.start_time.strftime("%b %d, %Y %I:%M%P")
     f << "<#{event.url}|#{event.title}>"
+    f << "<https://maps.google.com?q=#{event.location}|:world_map:>" if event.location.present?
     f.join(" | ")
   end
 

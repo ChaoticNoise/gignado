@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
+  scope module: 'api' do
+    namespace 'v1' do
+      resources :bots, only: [:show]
+    end
+  end
+
   match '/check(.json)' => 'status#check', :via => :get
 
   root to: "events#index"

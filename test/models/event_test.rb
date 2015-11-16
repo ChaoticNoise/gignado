@@ -41,4 +41,18 @@ class EventTest < ActiveSupport::TestCase
     ical = Event.ical(events)
     assert_match(/#{events[0].title}/, ical.to_ical)
   end
+
+  test "search_by finds events with words in the column" do
+    event = FactoryGirl.create(:event, title: "Some Foo Bar")
+
+    found_event = Event.search_by(:title, "Foo").first
+
+    assert_equal(event, found_event)
+  end
+
+  test "url returns a url to view the event" do
+    event = FactoryGirl.create(:gig)
+    event.base_url = "http://test.com"
+    assert_equal(event.url, "http://test.com/gigs/#{event.id}")
+  end
 end

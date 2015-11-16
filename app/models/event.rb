@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   serialize :data, HashSerializer
 
   store_accessor :data, :uid, :points
+  attr_accessor :base_url
 
   validates :start_time, :end_time, :title, presence: true
   validate :start_before_end
@@ -13,6 +14,16 @@ class Event < ActiveRecord::Base
   before_save :confirm_uid
 
   scope :upcoming, -> { where("end_time > ?", Date.today) }
+  scope :today, -> { where("end_time > ? AND start_time < ?", Date.today, 1.day.from_now.beginning_of_day) }
+
+  def self.confirmed
+    #TODO handle other event confirmed types
+    where(status: Gig.statuses[:confirmed])
+  end
+
+  def self.search_by(column, query)
+    where("lower(#{column}) LIKE ?", "%#{query.downcase}%")
+  end
 
   def self.ical(events)
     cal = Icalendar::Calendar.new
@@ -32,6 +43,10 @@ class Event < ActiveRecord::Base
 
   def to_ical
     ical_event.to_ical
+  end
+
+  def url
+    "#{base_url}/#{type.downcase.pluralize}/#{id}"
   end
 
   protected

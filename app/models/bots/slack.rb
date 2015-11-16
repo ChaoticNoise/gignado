@@ -50,11 +50,11 @@ class Bots::Slack
     r << "```"
     r << "gignado <command>"
     r << "  all     all upcoming events"
-    r << "  find    find events with query in title"
+    r << "  find    find by events title"
     r << "  help    displays this help"
-    r << "  list    list upcoming confirmed events"
-    r << "  next    shows the next confirmed event"
-    r << "  today   list confirmed events today"
+    r << "  list    upcoming confirmed events"
+    r << "  next    next confirmed event"
+    r << "  today   confirmed events today"
     r << "```"
     r.join("\n")
   end

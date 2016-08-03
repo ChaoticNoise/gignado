@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   before_save :confirm_uid
 
   scope :upcoming, -> { where("end_time > ?", Time.zone.today) }
-  scope :today, -> { where("end_time > ? AND start_time < ?", Date.today, 1.day.from_now.beginning_of_day) }
+  scope :today, -> { where("end_time > ? AND start_time < ?", Time.zone.today, 1.day.from_now.beginning_of_day) }
 
   def self.confirmed
     #TODO handle other event confirmed types
@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.search_by(column, query)
-    where("lower(#{column}) LIKE ?", "%#{query.downcase}%")
+    where("lower(?) LIKE ?", column, "%#{query.downcase}%")
   end
 
   def self.ical(events)

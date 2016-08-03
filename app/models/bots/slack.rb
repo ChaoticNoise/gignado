@@ -26,19 +26,21 @@ class Bots::Slack
   end
 
   def generate_response
-    return "" unless authorized?
-    case tokenize.first
-    when 'all' || 'a'
+    t = tokenize.first
+
+    if !authorized?
+      return ""
+    elsif t == 'all' || t == 'a'
       format_multi_events(Event.upcoming)
-    when 'find' || 'f'
+    elsif t ==  'find' || t == 'f'
       format_multi_events(Event.search_by(:title, tokenize[1..-1].join(' ')))
-    when 'help' || 'h'
+    elsif t == 'help' || t == 'h'
       help_response()
-    when 'list' || 'l'
+    elsif t == 'list' || t == 'l'
       format_multi_events(Event.upcoming.confirmed)
-    when 'next' || 'n'
+    elsif t ==  'next' || t == 'n'
       format_event(Event.upcoming.confirmed.first)
-    when 'today' || 't'
+    elsif t == 'today' || t == 't'
       format_multi_events(Event.today.confirmed)
     else
       help_response()
@@ -101,6 +103,6 @@ class Bots::Slack
   end
 
   def tokenize
-    @text.split(" ")[1..-1] || []
+    @tokenize ||= @text.split(" ")[1..-1] || []
   end
 end

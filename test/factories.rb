@@ -1,7 +1,8 @@
-FactoryGirl.define do  factory :role do
+FactoryGirl.define do
+  factory :role do
     title 1
-event nil
-member nil
+    event nil
+    member nil
   end
 
   factory :member do

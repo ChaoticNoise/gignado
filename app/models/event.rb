@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 
   before_save :confirm_uid
 
-  scope :upcoming, -> { where("end_time > ?", Date.today) }
+  scope :upcoming, -> { where("end_time > ?", Time.zone.today) }
   scope :today, -> { where("end_time > ? AND start_time < ?", Date.today, 1.day.from_now.beginning_of_day) }
 
   def self.confirmed

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     @event = FactoryGirl.create(:gig) # creating a gig here cause there are no routes for event stuff yet (oether than index)
@@ -13,7 +13,7 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:events)
   end
-  
+
   test "should get index as calendar" do
     get :index, format: :ics
     assert_response :success

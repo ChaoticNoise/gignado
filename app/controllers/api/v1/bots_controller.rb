@@ -6,4 +6,5 @@ class Api::V1::BotsController < Api::BaseController
     bot = Bots::Factory.build('slack', params)
     render json: bot.response.to_json
   end
+
 end

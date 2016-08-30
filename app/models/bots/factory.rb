@@ -4,7 +4,6 @@ class Bots::Factory
   }
 
   def self.build(bot_name, params = {})
-    p = HashWithIndifferentAccess.new(params)
-    @@bot_registry[bot_name].new(p)
+    @@bot_registry[bot_name].new(params)
   end
 end

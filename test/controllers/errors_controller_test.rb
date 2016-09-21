@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ErrorsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   test "should redirect_to errors#inactive" do
     sign_in FactoryGirl.create(:member, activated_at: nil)

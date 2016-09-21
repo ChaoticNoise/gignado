@@ -42,10 +42,10 @@ class EventTest < ActiveSupport::TestCase
     assert_match(/#{events[0].title}/, ical.to_ical)
   end
 
-  test "search_by finds events with words in the column" do
+  test "by_title finds events with words in the column" do
     event = FactoryGirl.create(:event, title: "Some Foo Bar")
 
-    found_event = Event.search_by(:title, "Foo").first
+    found_event = Event.by_title("Foo").first
 
     assert_equal(event, found_event)
   end

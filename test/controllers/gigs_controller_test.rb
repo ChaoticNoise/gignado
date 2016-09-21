@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class GigsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     @gig = FactoryGirl.create(:gig)
@@ -16,30 +16,30 @@ class GigsControllerTest < ActionController::TestCase
 
   test "should create gig" do
     assert_difference('Gig.count') do
-      post :create, gig: { details: @gig.details, end_time: @gig.end_time, location: @gig.location, start_time: @gig.start_time, status: @gig.status, title: @gig.title, confirmation_deadline: @gig.confirmation_deadline }
+      post :create, params: { gig: { details: @gig.details, end_time: @gig.end_time, location: @gig.location, start_time: @gig.start_time, status: @gig.status, title: @gig.title, confirmation_deadline: @gig.confirmation_deadline } }
     end
 
     assert_redirected_to gig_path(assigns(:gig))
   end
 
   test "should show gig" do
-    get :show, id: @gig
+    get :show, params: { id: @gig }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @gig
+    get :edit, params: { id: @gig }
     assert_response :success
   end
 
   test "should update gig" do
-    patch :update, id: @gig, gig: { details: @gig.details, end_time: @gig.end_time, location: @gig.location, start_time: @gig.start_time, status: @gig.status, title: @gig.title, confirmation_deadline: @gig.confirmation_deadline }
+    patch :update, params: { id: @gig, gig: { details: @gig.details, end_time: @gig.end_time, location: @gig.location, start_time: @gig.start_time, status: @gig.status, title: @gig.title, confirmation_deadline: @gig.confirmation_deadline } }
     assert_redirected_to gig_path(assigns(:gig))
   end
 
   test "should destroy gig" do
     assert_difference('Gig.count', -1) do
-      delete :destroy, id: @gig
+      delete :destroy, params: { id: @gig }
     end
 
     assert_redirected_to events_path

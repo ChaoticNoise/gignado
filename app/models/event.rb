@@ -1,11 +1,11 @@
 require 'date_time_util'
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   include DateTimeUtil
 
   serialize :data, HashSerializer
 
-  store_accessor :data, :uid, :points
+  store :data, accessors: [ :uid, :points ]
   attr_accessor :base_url
 
   validates :start_time, :end_time, :title, presence: true
@@ -21,8 +21,8 @@ class Event < ActiveRecord::Base
     where(status: Gig.statuses[:confirmed])
   end
 
-  def self.search_by(column, query)
-    where("lower(?) LIKE ?", column, "%#{query.downcase}%")
+  def self.by_title(query)
+    where("lower(title) LIKE ?", "%#{query.downcase}%")
   end
 
   def self.ical(events)

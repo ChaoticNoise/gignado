@@ -33,7 +33,7 @@ class Bots::Slack
     elsif t == 'all' || t == 'a'
       format_multi_events(Event.upcoming)
     elsif t ==  'find' || t == 'f'
-      format_multi_events(Event.search_by(:title, tokenize[1..-1].join(' ')))
+      format_multi_events(Event.by_title(tokenize[1..-1].join(' ')))
     elsif t == 'help' || t == 'h'
       help_response()
     elsif t == 'list' || t == 'l'

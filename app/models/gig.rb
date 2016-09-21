@@ -1,5 +1,5 @@
 class Gig < Event
-  store_accessor :data, :payment, :plus_ones_allowed, :merch_needs
+  store :data, accessors: [ :payment, :plus_ones_allowed, :merch_needs ]
   enum status: {potential: 0, confirmed: 1, canceled: 2}
   enum payment_status: {negotiation: 0, agreed: 1, overdue: 2, paid: 3, waived: 4}
 

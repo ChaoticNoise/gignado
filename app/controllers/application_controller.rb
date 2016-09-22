@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_active_member!
-    redirect_to inactive_errors_path unless current_member.nil? || (current_member.is_active || Rails.env.development?)
+    redirect_to inactive_errors_path unless current_member.nil? || current_member.is_active
   end
 end

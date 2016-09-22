@@ -1,7 +1,7 @@
 require 'openssl'
 I_KNOW_THAT_OPENSSL_VERIFY_PEER_EQUALS_VERIFY_NONE_IS_WRONG = nil
 
-class Resource::GigOMatic
+class Resource::GigOMatic::Service
 
   def initialize
     login
@@ -19,8 +19,8 @@ class Resource::GigOMatic
   def login
     agent.get('https://gig-o-matic.appspot.com/login') do |page|
       page.form_with(:action => '/login') do |f|
-        f.email = 'dvantuyl@gmail.com'
-        f.password = 'ZeVocHstp5mw'
+        f.email = ENV["GIGO_UN"]
+        f.password = ENV["GIGO_PW"]
       end.submit
     end
   end
@@ -33,10 +33,11 @@ class Resource::GigOMatic
 
   def gigs
     gig_forms.map { |form|
-      form.fields.inject({}) { |gig, field|
+      gigo_gig = form.fields.inject({}) { |gig, field|
         gig[field.name] = field.value
         gig
       }
+      Resource::GigOMatic::Gig.new(gigo_gig)
     }
   end
 end

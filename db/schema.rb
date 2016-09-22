@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110043346) do
+ActiveRecord::Schema.define(version: 20160922005806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +33,10 @@ ActiveRecord::Schema.define(version: 20151110043346) do
     t.integer  "gig_pic_id"
     t.integer  "bus_pic_id"
     t.integer  "rehearsal_pic_id"
+    t.datetime "synced_at"
+    t.string   "gigo_key"
+    t.index ["data"], name: "index_events_on_data", using: :gin
   end
-
-  add_index "events", ["data"], name: "index_events_on_data", using: :gin
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,9 +55,8 @@ ActiveRecord::Schema.define(version: 20151110043346) do
     t.string   "last_name"
     t.string   "image_url"
     t.datetime "activated_at"
+    t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
-  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
 end

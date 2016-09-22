@@ -46,7 +46,7 @@
       Confirmation Deadline
     </div>
     <div class="col-sm-9 event-value">
-      <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") %>
+      <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") if @gig.confirmation_deadline %>
     </div>
   </div>
 

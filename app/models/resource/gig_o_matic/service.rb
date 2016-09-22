@@ -10,7 +10,6 @@ class Resource::GigOMatic::Service
   def agent
     @agent ||= Mechanize.new do |agent|
       agent.verify_mode = OpenSSL::SSL::VERIFY_PEER
-      #agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
       agent.follow_meta_refresh = true
       agent.keep_alive = false
       agent.log = Rails.logger

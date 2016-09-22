@@ -9,7 +9,8 @@ class Resource::GigOMatic::Service
 
   def agent
     @agent ||= Mechanize.new do |agent|
-      agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      agent.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      #agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
       agent.follow_meta_refresh = true
       agent.keep_alive = false
       agent.log = Rails.logger
@@ -33,9 +34,8 @@ class Resource::GigOMatic::Service
 
   def gigs
     gig_forms.map { |form|
-      gigo_gig = form.fields.inject({}) { |gig, field|
+      gigo_gig = form.fields.each_with_object({}) { |field, gig|
         gig[field.name] = field.value
-        gig
       }
       Resource::GigOMatic::Gig.new(gigo_gig)
     }

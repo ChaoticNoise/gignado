@@ -83,7 +83,7 @@ class Bots::SlackTest < ActiveSupport::TestCase
 
   test "#generate_response should return today's confirmed events if text is 'gignado today'" do
     g1 = FactoryGirl.create(:gig, title: 'Foo', status: :confirmed, start_time: 1.day.from_now, end_time: 1.day.from_now + 1.hour)
-    g2 = FactoryGirl.create(:gig, title: 'Bar', status: :confirmed, confirmation_deadline: Date.today, start_time: Date.today + 1.hour, end_time: Date.today + 2.hour)
+    g2 = FactoryGirl.create(:gig, title: 'Bar', status: :confirmed, confirmation_deadline: Time.zone.today, start_time: Time.zone.today + 1.hour, end_time: Time.zone.today + 2.hour)
     @bot.text = 'gignado today'
     refute(@bot.generate_response.include?(g1.title))
     assert(@bot.generate_response.include?(g2.title))

@@ -56,15 +56,15 @@ class GigsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_gig
-      @gig = Gig.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_gig
+    @gig = Gig.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def gig_params
-      params.require(:gig).permit(:title, :status, :start_time, :end_time,
-      :location, :details, :confirmation_deadline, :play_times, :payment,
-      :payment_status, :plus_ones_allowed, :merch_needs)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def gig_params
+    params.require(:gig).permit(:title, :status, :start_time, :end_time,
+    :location, :details, :confirmation_deadline, :play_times, :payment,
+    :payment_status, :plus_ones_allowed, :merch_needs)
+  end
 end

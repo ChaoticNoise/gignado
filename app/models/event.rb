@@ -17,7 +17,7 @@ class Event < ApplicationRecord
   scope :today, -> { where("end_time > ? AND start_time < ?", Time.zone.today, 1.day.from_now.beginning_of_day) }
 
   def self.confirmed
-    #TODO handle other event confirmed types
+    # TODO handle other event confirmed types
     where(status: Gig.statuses[:confirmed])
   end
 

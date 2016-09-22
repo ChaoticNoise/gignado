@@ -1,11 +1,11 @@
-require 'codacy-coverage'
-Codacy::Reporter.start
-
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/reporters'
+require 'codacy-coverage'
+Codacy::Reporter.start
+
 Minitest::Reporters.use!
 
 

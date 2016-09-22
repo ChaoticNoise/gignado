@@ -4,6 +4,7 @@ I_KNOW_THAT_OPENSSL_VERIFY_PEER_EQUALS_VERIFY_NONE_IS_WRONG = nil
 class Resource::GigOMatic
 
   def initialize
+    login
   end
 
   def agent
@@ -24,11 +25,18 @@ class Resource::GigOMatic
     end
   end
 
-  def agenda
-    agent.get('https://gig-o-matic.appspot.com/agenda.html') do |page|
-      page.links.each do |link|
-        puts link.text
-      end
-    end
+  def gig_forms
+    agent.get('https://gig-o-matic.appspot.com/agenda.html')
+      .links_with(href: /gig_info\.html/)
+      .map {|link| agent.get(link.href.gsub('gig_info','gig_edit')).form }
+  end
+
+  def gigs
+    gig_forms.map { |form|
+      form.fields.inject({}) { |gig, field|
+        gig[field.name] = field.value
+        gig
+      }
+    }
   end
 end

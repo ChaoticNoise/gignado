@@ -52,6 +52,10 @@ gem 'web-console', '~> 2.0', group: :development
 # Assigns has been removed from rails 5
 gem 'rails-controller-testing', group: :test
 
+# Test Coverage analysis tool. Used for Codacy metrics
+gem 'simplecov', require: false, group: :test
+gem 'codacy-coverage', require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

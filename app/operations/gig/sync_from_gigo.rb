@@ -31,7 +31,8 @@ class Gig
     # Fix Edge case
     # Set the confirmation_deadline to the gig start_time if it is past it
     def fix_confirmation_deadline(gig)
-      if gig.confirmation_deadline > gig.start_time
+      if gig.confirmation_deadline && gig.start_time &&
+        gig.confirmation_deadline > gig.start_time
         gig.confirmation_deadline = gig.start_time
       end
     end

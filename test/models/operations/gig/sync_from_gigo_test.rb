@@ -13,9 +13,7 @@ class Gig::SyncFromGigoTest < ActiveSupport::TestCase
   end
 
   test "create a new gig from gigo" do
-    return
     Gig::SyncFromGigo.new([@gigo]).update()
-
     gig = Gig.find_by(gigo_key: @gigo.key)
     assert_equal(gig.title, @gigo.title)
     assert_equal(gig.start_time, @gigo.start)

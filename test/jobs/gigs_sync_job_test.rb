@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EventsSyncJobTest < ActiveJob::TestCase
+class GigsSyncJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -16,15 +16,6 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where("end_time > ?", Time.zone.today) }
   scope :today, -> { where("end_time > ? AND start_time < ?", Time.zone.today, 1.day.from_now.beginning_of_day) }
 
-  def self.last_sync
-    where("synced_at IS NOT NULL").order("synced_at").pluck(:synced_at).first
-  end
-
-  def self.confirmed
-    # TODO handle other event confirmed types
-    where(status: Gig.statuses[:confirmed])
-  end
-
   def self.by_title(query)
     where("lower(title) LIKE ?", "%#{query.downcase}%")
   end

@@ -2,11 +2,17 @@ require 'test_helper'
 
 class GigsControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
+  include ActiveJob::TestHelper
 
   setup do
     @gig = FactoryGirl.create(:gig)
-#    @request.env["devise.mapping"] = Devise.mappings[:admin]
     sign_in FactoryGirl.create(:member)
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:gigs)
   end
 
   test "should get new" do
@@ -42,6 +48,27 @@ class GigsControllerTest < ActionController::TestCase
       delete :destroy, params: { id: @gig }
     end
 
-    assert_redirected_to events_path
+    assert_redirected_to gigs_path
+  end
+
+  test "should enqueue GigsSyncJob" do
+    assert_enqueued_with(job: GigsSyncJob) do
+      get :sync
+    end
+
+    assert_enqueued_jobs 1
+    assert_response :success
+  end
+
+  test "should not enqueue GigsSyncJob" do
+    get :sync, params: { job_id: 'foo'}
+    assert_no_enqueued_jobs
+    assert_response :success
+  end
+
+  test "should get async grid" do
+    get :async_grid, xhr: true, format: 'js'
+    assert_response :success
+    assert_not_nil assigns(:gigs)
   end
 end

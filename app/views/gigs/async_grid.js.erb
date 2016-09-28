@@ -1,0 +1,2 @@
+$("#gigs-grid").html("<%= escape_javascript(render partial: 'grid', locals: {gigs: @gigs }) %>")
+$("#last-sync").html("<%= escape_javascript(render partial: 'last_sync') %>")

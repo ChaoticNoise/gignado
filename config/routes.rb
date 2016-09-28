@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :gigs, :only => [:show, :new, :create, :edit, :update, :destroy]
-  resources :events, :only => [:index, :destroy] do
+  resources :events, :only => [:index]
+  resources :gigs, :only => [:index, :show, :new, :create, :edit, :update, :destroy] do
     collection do
       get 'sync'
       get 'async_grid'
@@ -28,5 +28,5 @@ Rails.application.routes.draw do
 
   match '/check(.json)' => 'status#check', :via => :get
 
-  root to: "events#index"
+  root to: "gigs#index"
 end

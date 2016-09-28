@@ -31,17 +31,17 @@ class Bots::Slack
     if !authorized?
       return ""
     elsif t == 'all' || t == 'a'
-      format_multi_events(Event.upcoming)
+      format_multi_gigs(Gig.upcoming)
     elsif t ==  'find' || t == 'f'
-      format_multi_events(Event.by_title(tokenize[1..-1].join(' ')))
+      format_multi_gigs(Gig.by_title(tokenize[1..-1].join(' ')))
     elsif t == 'help' || t == 'h'
       help_response()
     elsif t == 'list' || t == 'l'
-      format_multi_events(Event.upcoming.confirmed)
+      format_multi_gigs(Gig.upcoming.confirmed)
     elsif t ==  'next' || t == 'n'
-      format_event(Event.upcoming.confirmed.first)
+      format_gig(Gig.upcoming.confirmed.first)
     elsif t == 'today' || t == 't'
-      format_multi_events(Event.today.confirmed)
+      format_multi_gigs(Gig.today.confirmed)
     else
       help_response()
     end
@@ -51,12 +51,12 @@ class Bots::Slack
     r = []
     r << "```"
     r << "gignado <command>"
-    r << "  all     all upcoming events"
-    r << "  find    find by events title"
+    r << "  all     all upcoming gigs"
+    r << "  find    find by gigs title"
     r << "  help    displays this help"
-    r << "  list    upcoming confirmed events"
-    r << "  next    next confirmed event"
-    r << "  today   confirmed events today"
+    r << "  list    upcoming confirmed gigs"
+    r << "  next    next confirmed gig"
+    r << "  today   confirmed gigs today"
     r << "```"
     r.join("\n")
   end
@@ -83,20 +83,20 @@ class Bots::Slack
     end
   end
 
-  def format_multi_events(events)
-    events.map{ |e| format_event(e) }.join("\n")
+  def format_multi_gigs(gigs)
+    gigs.map{ |e| format_gig(e) }.join("\n")
   end
 
-  def format_event(event)
-    return "" if event.nil?
-    event.base_url = @base_url
+  def format_gig(gig)
+    return "" if gig.nil?
+    gig.base_url = @base_url
     f = []
-    f << type_icon(event.type)
-    f << status_icon(event.status)
-    f << event.start_time.strftime("%b %d, %Y %I:%M%P")
-    f << "<#{event.url}|#{event.title}>"
-    if event.location.present?
-      location_query = { q: event.location }.to_query
+    f << type_icon(gig.type)
+    f << status_icon(gig.status)
+    f << gig.start_time.strftime("%b %d, %Y %I:%M%P")
+    f << "<#{gig.url}|#{gig.title}>"
+    if gig.location.present?
+      location_query = { q: gig.location }.to_query
       f << "<https://maps.google.com?#{location_query}|map>"
     end
     f.join(" | ")

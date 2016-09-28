@@ -1,5 +1,5 @@
-class EventsSyncJob < ApplicationJob
-  queue_as :events_sync
+class GigsSyncJob < ApplicationJob
+  queue_as :gigs_sync
 
   def perform(*args)
     @@lock ||= false

@@ -3,10 +3,10 @@
 <% end %>
 
 <div class="page-header">
-  <h2>Events</h2>
+  <h2>Gigs</h2>
   <div class="row">
     <div class="col-md-12">
-      <%= link_to '#', id: "events-sync", class: "btn", remote: true do %>
+      <%= link_to '#', id: "gigs-sync", class: "btn", remote: true do %>
         <%= fa_icon 'refresh' %> Sync
       <% end %>
       <div id="last-sync" style="display: inline-block;">
@@ -19,8 +19,8 @@
   </div>
 </div>
 
-<div id="events-grid">
-  <%= render partial: 'grid', locals: { events: @events } %>
+<div id="gigs-grid">
+  <%= render partial: 'grid', locals: { gigs: @gigs } %>
 </div>
 
 <hr/>

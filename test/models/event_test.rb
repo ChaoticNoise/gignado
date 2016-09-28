@@ -56,13 +56,4 @@ class EventTest < ActiveSupport::TestCase
     assert_equal(event.url, "http://test.com/gigs/#{event.id}")
   end
 
-  test ".last_sync returns last event synced_at date" do
-    expected = DateTime.now - 10.days
-    FactoryGirl.create(:event, synced_at: nil)
-    FactoryGirl.create(:event, synced_at: expected)
-    FactoryGirl.create(:event, synced_at: DateTime.now)
-
-    assert_equal(Event.last_sync.to_i, expected.to_i)
-  end
-
 end

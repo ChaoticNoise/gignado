@@ -10,6 +10,15 @@ class Gig < Event
 
   validate :confirmation_before_start
 
+  def self.last_sync
+    where("synced_at IS NOT NULL").order("synced_at").pluck(:synced_at).first
+  end
+
+  def self.confirmed
+    # TODO handle other event confirmed types
+    where(status: Gig.statuses[:confirmed])
+  end
+
   protected
   def confirmation_before_start
     if confirmation_deadline && start_time < confirmation_deadline

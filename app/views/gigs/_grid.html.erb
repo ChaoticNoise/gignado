@@ -1,0 +1,36 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <% gigs.each do |gig| %>
+        <tr class="row">
+          <td class="col-fixed-icon" >
+            <%= fa_icon 'music', data: {toggle: 'tooltip', placement:'bottom'}, title: gig.type %>
+          </td>
+          <td class="col-md-2 col-sm-2 col-xs-2"><%= gig.start_time.strftime("%b %d, %Y %I:%M%P") %></td>
+          <td class="col-fixed-icon">
+            <span class="status status-<%= gig.status %>">
+              <%= fa_icon gig_status_to_icon(gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: gig.status %>
+            </span>
+          </td>
+          <td class="col-md-9">
+            <%= link_to gig do %>
+              <%= gig.title %>
+            <% end %>
+          </td>
+          <%- if gig.is_a? Gig %>
+            <td class="col-fixed-icon">
+              <%= link_to edit_gig_path(gig) do %>
+                <%= fa_icon "pencil" %>
+              <% end %>
+            </td>
+          <% end %>
+          <td class="col-fixed-icon">
+            <%= link_to gig, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= fa_icon "trash" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

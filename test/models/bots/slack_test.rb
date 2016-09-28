@@ -43,13 +43,13 @@ class Bots::SlackTest < ActiveSupport::TestCase
     assert_equal(@bot.generate_response, @bot.help_response)
   end
 
-  test "#format_event should return a formated event string" do
+  test "#format_gig should return a formated gig string" do
     gig = FactoryGirl.create(:gig)
     @bot.base_url = "http://foo.test"
-    assert_instance_of(String, @bot.format_event(gig))
+    assert_instance_of(String, @bot.format_gig(gig))
   end
 
-  test "#generate_response should return all upcoming events if text is 'gignado all'" do
+  test "#generate_response should return all upcoming gigs if text is 'gignado all'" do
     g1 = FactoryGirl.create(:gig, title: 'Foo', status: :potential)
     g2 = FactoryGirl.create(:gig, title: 'Bar', status: :potential)
     @bot.text = 'gignado all'
@@ -57,7 +57,7 @@ class Bots::SlackTest < ActiveSupport::TestCase
     assert(@bot.generate_response.include?(g2.title))
   end
 
-  test "#generate_response should return found events if text is 'gignado find'" do
+  test "#generate_response should return found gigs if text is 'gignado find'" do
     g1 = FactoryGirl.create(:gig, title: 'Foo')
     g2 = FactoryGirl.create(:gig, title: 'Bar')
     @bot.text = 'gignado find foo'
@@ -65,7 +65,7 @@ class Bots::SlackTest < ActiveSupport::TestCase
     refute(@bot.generate_response.include?(g2.title))
   end
 
-  test "#generate_response should return confirmed upcoming events if text is 'gignado list'" do
+  test "#generate_response should return confirmed upcoming gigs if text is 'gignado list'" do
     g1 = FactoryGirl.create(:gig, title: 'Foo', status: :confirmed)
     g2 = FactoryGirl.create(:gig, title: 'Bar', status: :potential)
     @bot.text = 'gignado list'
@@ -73,7 +73,7 @@ class Bots::SlackTest < ActiveSupport::TestCase
     refute(@bot.generate_response.include?(g2.title))
   end
 
-  test "#generate_response should return next confirmed event if text is 'gignado next'" do
+  test "#generate_response should return next confirmed gig if text is 'gignado next'" do
     g1 = FactoryGirl.create(:gig, title: 'Foo', status: :potential)
     g2 = FactoryGirl.create(:gig, title: 'Bar', status: :confirmed)
     @bot.text = 'gignado next'
@@ -81,7 +81,7 @@ class Bots::SlackTest < ActiveSupport::TestCase
     assert(@bot.generate_response.include?(g2.title))
   end
 
-  test "#generate_response should return today's confirmed events if text is 'gignado today'" do
+  test "#generate_response should return today's confirmed gigs if text is 'gignado today'" do
     g1 = FactoryGirl.create(:gig, title: 'Foo', status: :confirmed, start_time: 1.day.from_now, end_time: 1.day.from_now + 1.hour)
     g2 = FactoryGirl.create(:gig, title: 'Bar', status: :confirmed, confirmation_deadline: Time.zone.today, start_time: Time.zone.today + 1.hour, end_time: Time.zone.today + 2.hour)
     @bot.text = 'gignado today'

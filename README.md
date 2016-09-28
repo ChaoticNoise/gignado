@@ -41,6 +41,17 @@ The database is seeded with the following credentials:
 - password: adminado
 
 
+## Async jobs
+
+Syncing to Gig-o-matic and mailing requires that memcache be enabled. It's
+turned off by default in development environment.
+
+To switch it on:
+```
+rails dev:cache
+```
+
+
 After logging in, change your admin password by opening:
 ```
 http://localhost:3000/members/edit

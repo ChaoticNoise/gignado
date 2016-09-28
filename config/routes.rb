@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :gigs, :only => [:show, :new, :create, :edit, :update, :destroy]
-  resources :events, :only => [:index, :destroy]
+  resources :events, :only => [:index, :destroy] do
+    collection do
+      get 'sync'
+      get 'async_grid'
+    end
+  end
 
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks"}
   resources :members, :only => [:index, :edit, :update]

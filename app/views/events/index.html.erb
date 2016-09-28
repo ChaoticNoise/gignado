@@ -2,44 +2,25 @@
   <%= render partial: 'shared/alerts', locals: { type: 'success', text: notice } %>
 <% end %>
 
-<h2>Events</h2>
-<hr/>
-
-<div class="table-responsive">
-  <table class="table table-striped">
-    <tbody>
-      <% @events.each do |event| %>
-        <tr class="row">
-          <td class="col-fixed-icon" >
-            <%= fa_icon event_type_to_icon(event.type), data: {toggle: 'tooltip', placement:'bottom'}, title: event.type %>
-          </td>
-          <td class="col-md-2 col-sm-2 col-xs-2"><%= event.start_time.strftime("%b %d, %Y %I:%M%P") %></td>
-          <td class="col-fixed-icon">
-            <span class="status status-<%= event.status %>">
-              <%= fa_icon event_status_to_icon(event.status), data: {toggle: 'tooltip', placement:'bottom'}, title: event.status %>
-            </span>
-          </td>
-          <td class="col-md-9">
-            <%= link_to event do %>
-              <%= event.title %>
-            <% end %>
-          </td>
-          <%- if event.is_a? Gig %>
-            <td class="col-fixed-icon">
-              <%= link_to edit_gig_path(event) do %>
-                <%= fa_icon "pencil" %>
-              <% end %>
-            </td>
-          <% end %>
-          <td class="col-fixed-icon">
-            <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <%= fa_icon "trash" %>
-            <% end %>
-          </td>
-        </tr>
+<div class="page-header">
+  <h2>Events</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to '#', id: "events-sync", class: "btn", remote: true do %>
+        <%= fa_icon 'refresh' %> Sync
       <% end %>
-    </tbody>
-  </table>
+      <div id="last-sync" style="display: inline-block;">
+        <%= render partial: 'last_sync' %>
+      </div>
+      <%= link_to new_gig_path, class: "btn btn-primary pull-right" do %>
+        <%= fa_icon 'plus' %> New Gig
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="events-grid">
+  <%= render partial: 'grid', locals: { events: @events } %>
 </div>
 
 <hr/>

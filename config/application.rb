@@ -20,7 +20,10 @@ module Gignado
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.active_job.queue_adapter = :sucker_punch
+
     config.autoload_paths << "#{config.root}/app/operations"
+    config.autoload_paths << "#{config.root}/app/services"
 
     # Specifiy Devise layouts
     # (see: https://github.com/plataformatec/devise/wiki/How-To%3a-Create-custom-layouts)

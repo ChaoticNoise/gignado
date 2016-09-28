@@ -1,11 +1,25 @@
 require 'openssl'
-I_KNOW_THAT_OPENSSL_VERIFY_PEER_EQUALS_VERIFY_NONE_IS_WRONG = nil
-
-class Resource::GigOMatic::Service
+class GigOMatic::Service
 
   def initialize
     login
   end
+
+  def gigs
+    # Don't sync to gigo if running tests
+    if Rails.env.test?
+      []
+    else
+      gig_forms.map { |form|
+        gigo_gig = form.fields.each_with_object({}) { |field, gig|
+          gig[field.name] = field.value
+        }
+        GigOMatic::Gigo.new(gigo_gig)
+      }
+    end
+  end
+
+  private
 
   def agent
     @agent ||= Mechanize.new do |agent|
@@ -31,12 +45,4 @@ class Resource::GigOMatic::Service
       .map {|link| agent.get(link.href.gsub('gig_info','gig_edit')).form }
   end
 
-  def gigs
-    gig_forms.map { |form|
-      gigo_gig = form.fields.each_with_object({}) { |field, gig|
-        gig[field.name] = field.value
-      }
-      Resource::GigOMatic::Gig.new(gigo_gig)
-    }
-  end
 end

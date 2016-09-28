@@ -6,6 +6,15 @@ GIT
     http-cookie (1.0.2)
       domain_name (~> 0.5)
 
+GIT
+  remote: git@github.com:cdale77/active_job_status.git
+  revision: f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5
+  ref: f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5
+  specs:
+    active_job_status (1.1.0)
+      activejob (> 4.2)
+      activesupport (> 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -276,6 +285,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sucker_punch (2.0.2)
+      concurrent-ruby (~> 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
@@ -305,6 +316,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_job_status!
   bootstrap-sass (~> 3.3)
   byebug
   codacy-coverage
@@ -336,6 +348,7 @@ DEPENDENCIES
   simple_form (~> 3.3)
   simplecov
   spring
+  sucker_punch (~> 2.0)
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)

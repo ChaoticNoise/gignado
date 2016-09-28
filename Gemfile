@@ -56,6 +56,9 @@ gem 'rails-controller-testing', group: :test
 gem 'simplecov', require: false, group: :test
 gem 'codacy-coverage', require: false
 
+gem 'sucker_punch', '~> 2.0'
+gem 'active_job_status', git: 'git@github.com:cdale77/active_job_status.git', ref: 'f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Gig::SyncFromGigoTest < ActiveSupport::TestCase
   def setup
-    @gigo = Resource::GigOMatic::Gig.new(
+    @gigo = GigOMatic::Gigo.new(
       'gig_title' => 'foo',
       'gig_date' => '1/01/2016',
       'gig_details' => 'details foo',

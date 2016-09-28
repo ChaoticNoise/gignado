@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:breadbeard/http-cookie.git
+  remote: https://github.com/breadbeard/http-cookie.git
   revision: ba63c233036389087edc49c0c1293744e1919ae1
   ref: ba63c233036389087edc49c0c1293744e1919ae1
   specs:
@@ -7,7 +7,7 @@ GIT
       domain_name (~> 0.5)
 
 GIT
-  remote: git@github.com:cdale77/active_job_status.git
+  remote: https://github.com/cdale77/active_job_status.git
   revision: f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5
   ref: f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5
   specs:

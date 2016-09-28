@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.6'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # use forked http-cookie to preserve gig-o-matic double-quotes in cookie values
-gem 'http-cookie', git: 'git@github.com:breadbeard/http-cookie.git', ref: 'ba63c233036389087edc49c0c1293744e1919ae1'
+gem 'http-cookie', git: 'https://github.com/breadbeard/http-cookie.git', ref: 'ba63c233036389087edc49c0c1293744e1919ae1'
 # Used for interacting with gig-o-matic via it's UI
 gem 'mechanize', '~> 2.7.4'
 
@@ -57,7 +57,8 @@ gem 'simplecov', require: false, group: :test
 gem 'codacy-coverage', require: false
 
 gem 'sucker_punch', '~> 2.0'
-gem 'active_job_status', git: 'git@github.com:cdale77/active_job_status.git', ref: 'f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5'
+#gem 'active_job_status', git: 'git@github.com:cdale77/active_job_status.git', ref: 'f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5'
+gem 'active_job_status', git: 'https://github.com/cdale77/active_job_status.git', ref: 'f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,7 +1,7 @@
 
 # Seed Database with admin (nado)
 Member.create!(
-  email: 'gignado@chaoticnoise[dot]com',
+  email: 'gignado@chaoticnoise.com',
   password: Devise.friendly_token[0,20],
   first_name: 'Admin',
   last_name: 'Nado',

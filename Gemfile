@@ -20,9 +20,6 @@ gem 'font-awesome-rails', '~> 4.6'
 # navigation
 gem 'simple-navigation', '~> 4.0.3'
 
-# form gems
-gem 'simple_form', '~> 3.3'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -56,9 +53,15 @@ gem 'rails-controller-testing', group: :test
 gem 'simplecov', require: false, group: :test
 gem 'codacy-coverage', require: false
 
+# Async jobs
 gem 'sucker_punch', '~> 2.0'
-#gem 'active_job_status', git: 'git@github.com:cdale77/active_job_status.git', ref: 'f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5'
 gem 'active_job_status', git: 'https://github.com/cdale77/active_job_status.git', ref: 'f61a2c77dba10bd8b763f2cef7e1ef54cc4746b5'
+
+# Form Gems
+gem 'reform', '>= 2.2.0'
+gem 'reform-rails'
+gem 'dry-validation'
+gem 'simple_form', '~> 3.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

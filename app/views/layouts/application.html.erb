@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%- if member_signed_in? && current_member.is_active %>
+<%- if member_signed_in? && current_member.access_allowed %>
   <%= render partial: '/shared/navbar_signed_in' %>
 <%- end %>
 

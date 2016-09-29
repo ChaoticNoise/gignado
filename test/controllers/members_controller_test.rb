@@ -20,7 +20,7 @@ class MembersControllerTest < ActionController::TestCase
   end
 
   test "should update gig" do
-    patch :update, params: { id: @member, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, is_active: 1 } }
+    patch :update, params: { id: @member, member: { first_name: @member.first_name, last_name: @member.last_name, email: @member.email, access_allowed: 1 } }
     assert_redirected_to members_path
   end
 end

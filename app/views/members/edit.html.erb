@@ -1,38 +1,46 @@
-<h1>Editing Member</h1>
+<div class="page-header">
+  <h2>Edit Member</h2>
+</div>
 
-<%= form_for(@member) do |f| %>
-  <% if @member.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
-
-      <ul>
-      <% @member.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= simple_form_for @form do |f| %>
+  <% if @form.errors.messages.any? %>
+    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@form.errors.messages.count, 'error')} prohibited this gig from being saved." } %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+  <%= f.input :access_allowed, as: :boolean %>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :first_name, placeholder: 'First Name' %>
+      <%= f.input :last_name, placeholder: 'Last Name' %>
+      <%= f.input :pronoun, placeholder: 'Pronoun' %>
+      <%= f.input :email, placeholder: 'Email' %>
+      <%= f.input :telephone, placeholder: '(  )   -   ' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :section, collection: Member.sections.keys.to_a %>
+      <%= f.input :status, collection: Member.statuses.keys.to_a %>
+      <%= f.input :date_joined %>
+      <%= f.input :has_bus_insurance, as: :boolean %>
+      <%= f.input :has_patch, as: :boolean %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+
+  <hr/>
+
+  <h3>Tour Info</h3>
+
+  <%= f.input :emergency_contact, as: 'text', placeholder: 'Contact Name and Info' %>
+  <%= f.input :allergies, as: 'text', placeholder: 'Medical / Food Allergies we need to be aware of' %>
+  <%= f.input :health_issues, as: 'text', placeholder: 'All health issues we need to accomodate for' %>
+  <%= f.input :food_restrictions, as: 'text', placeholder: 'Vegitarian, Vegan, Non-Dairy, GF, etc' %>
+
+  <div class="pull-right">
+    <%= link_to 'Cancel', members_path, class: "btn" %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :is_active %>
-    <%= f.check_box :is_active %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
 <% end %>
-
-
-<%= link_to 'Back', members_path %>

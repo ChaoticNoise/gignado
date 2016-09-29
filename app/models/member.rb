@@ -7,6 +7,13 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
+  serialize :data, HashSerializer
+  store :data, accessors: [:date_joined, :telephone, :emergency_contact,
+    :allergies, :health_issues, :food_restrictions, :pronoun]
+
+  enum status: {trial: 0, active: 1, sporadic: 2, on_break: 3, non_member: 4, officially_quit: 5, unofficially_quit: 6,  failed_trial: 7, suspended: 8, kicked_out: 9}
+  enum section: {no_section: 0, percussion: 1, saxophone: 2, trumpet: 3, trombone: 4, sousaphone: 5, bruiser: 6}
+
   has_many :booker_gigs, class_name: 'Gig', foreign_key: 'booker_id', dependent: :nullify
   has_many :day_pic_gigs, class_name: 'Gig', foreign_key: 'day_pic_id', dependent: :nullify
   has_many :gig_pic_gigs, class_name: 'Gig', foreign_key: 'gig_pic_id', dependent: :nullify
@@ -44,12 +51,20 @@ class Member < ApplicationRecord
     self.first_name
   end
 
-  def is_active
+  def access_allowed
     !self.activated_at.nil?
   end
 
-  def is_active=(val)
-    self.activated_at = (val.to_i == 1 ? Time.now : nil)
+  def access_allowed=(val)
+    if val.is_a?(String) && val.to_i == 1
+      self.activated_at = Time.zone.now
+    elsif val.is_a?(String) && val.to_i != 1
+      self.activated_at = nil
+    elsif val.is_a?(Boolean) && val
+      self.activated_at = Time.zone.now
+    elsif val.is_a?(Boolean) && !val
+      self.activated_at = nil
+    end
   end
 
   def to_s

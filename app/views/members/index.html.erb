@@ -9,7 +9,6 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th>Active?</th>
         <th colspan="1"></th>
       </tr>
     </thead>
@@ -20,7 +19,6 @@
           <td><%= member.first_name %></td>
           <td><%= member.last_name %></td>
           <td><%= member.email %></td>
-          <td><%= member.is_active %></td>
           <td><%= link_to 'Edit', edit_member_path(member) %></td>
         </tr>
       <% end %>

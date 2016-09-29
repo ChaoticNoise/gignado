@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160929002338) do
     t.datetime "activated_at"
     t.integer  "status",                 default: 0
     t.boolean  "has_patch",              default: false
+    t.boolean  "section_lead",           default: false
     t.integer  "section",                default: 0
     t.boolean  "has_bus_insurance",      default: false
     t.string   "gigo_key"

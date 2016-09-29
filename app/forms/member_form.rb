@@ -8,6 +8,7 @@ class MemberForm < Reform::Form
   property :section
   property :has_bus_insurance
   property :gigo_key
+  property :section_lead
 
   property :pronoun
   property :date_joined

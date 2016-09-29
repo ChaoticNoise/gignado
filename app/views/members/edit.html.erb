@@ -23,6 +23,7 @@
       <%= f.input :section, collection: Member.sections.keys.to_a %>
       <%= f.input :status, collection: Member.statuses.keys.to_a %>
       <%= f.input :date_joined %>
+      <%= f.input :section_lead, as: :boolean %>
       <%= f.input :has_bus_insurance, as: :boolean %>
       <%= f.input :has_patch, as: :boolean %>
     </div>

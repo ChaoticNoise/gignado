@@ -1,15 +1,16 @@
 class MembersController < ApplicationController
 
-  helper_method :member
+  helper_method :member, :members, :form
 
   # GET /members
   def index
-    @form = MemberQueryForm.new(Member::IndexQuery.new)
-    @members = Member.order(:first_name)
   end
 
   def query
-    @members = Member::IndexQuery.new(params[:member_query]).members
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /members/1/edit
@@ -34,5 +35,15 @@ class MembersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def member
     @member ||= Member.find(params[:id])
+  end
+
+  def form
+    @form ||= MemberQueryForm.new(Member::IndexQuery.new)
+  end
+
+  def members
+    form.validate(params[:member_query] || { trial: "1", active: "1" })
+    form.sync
+    form.model.members
   end
 end

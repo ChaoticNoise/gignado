@@ -1,0 +1,36 @@
+<%- Member.sections.keys.reverse.each do |section| -%>
+  <%- if members.where(section: section).exists? %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= section.capitalize.pluralize %></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Status</th>
+                <th colspan="1"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% members.where(section: section).each do |member| %>
+                <tr>
+                  <td width="17%"><%= member.first_name %></td>
+                  <td width="17%"><%= member.last_name %></td>
+                  <td width="17%"><%= member.email %></td>
+                  <td width="17%"><%= member.telephone %></td>
+                  <td width="17%"><%= member.status %></td>
+                  <td width="17%"><%= link_to 'Edit', edit_member_path(member), class: 'pull-right' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

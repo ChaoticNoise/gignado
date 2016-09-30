@@ -1,17 +1,17 @@
-<%= simple_form_for query_form, url: query_members_path, method: 'get', remote: true do |f| %>
+<%= simple_form_for query_form, url: query_members_path, method: 'get', html: { class: 'form-inline'}, remote: true do |f| %>
 
   <div class="row">
     <div class="col-md-6">
-      <%= f.input :trial, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
-      <%= f.input :active, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
-      <%= f.input :sporadic, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
-      <%= f.input :on_break, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
-      <%= f.input :other, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
+      <%= f.input :trial, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+      <%= f.input :active, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+      <%= f.input :sporadic, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+      <%= f.input :on_break, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+      <%= f.input :other, as: :boolean, wrapper_html: { class: 'pull-left'} %>
     </div>
     <div class="col-md-6">
-      <%= f.input :patches, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
-      <%= f.input :bus_drivers, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
-      <%= f.input :section_leads, as: :boolean, wrapper_html: { class: 'pull-left', style: 'margin-right: 15px;'} %>
+      <%= f.input :patches, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+      <%= f.input :bus_drivers, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+      <%= f.input :section_leads, as: :boolean, wrapper_html: { class: 'pull-left'} %>
     </div>
   </div>
 

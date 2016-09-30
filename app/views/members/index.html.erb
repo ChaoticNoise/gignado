@@ -1,10 +1,15 @@
 <div class="page-header">
-  <h2>Members</h2>
+  <h2>
+    <%= fa_icon 'users' %>
+    Members
+  </h2>
+
+
+  <div class="sticky">
+    <%= render partial: 'query_form' %>
+  </div>
 </div>
 
-<div class="sticky" style="background-color: white;">
-  <%= render partial: 'query_form' %>
-</div>
 
 <div id="members-grid">
   <%= render partial: 'grid' %>

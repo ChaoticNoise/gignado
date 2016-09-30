@@ -2,7 +2,6 @@ require 'openssl'
 class GigOMatic::Service
 
   def initialize
-    login
   end
 
   def gigs
@@ -10,6 +9,7 @@ class GigOMatic::Service
     if Rails.env.test?
       []
     else
+      login
       gig_forms.map { |form|
         gigo_gig = form.fields.each_with_object({}) { |field, gig|
           gig[field.name] = field.value

@@ -3,11 +3,7 @@
 <% end %>
 
 <div class="page-header">
-  <h2>
-    <%= fa_icon 'music', data: {toggle: 'tooltip', placement:'bottom'}, title: 'Gig' %>
-    &nbsp;
-    <%= @gig.title %>
-  </h2>
+  <%= render partial: 'shared/title', locals: { title: @gig.title, icon: 'music'} %>
 </div>
 
 <div class="gig-data">

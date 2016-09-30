@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2>Edit Member</h2>
+  <%= render partial: 'shared/title', locals: { title: member, icon: 'users'} %>
 </div>
 
 <%= simple_form_for @form do |f| %>

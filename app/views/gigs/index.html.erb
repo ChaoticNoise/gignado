@@ -1,8 +1,5 @@
 <div class="page-header">
-  <h2>
-    <%= fa_icon 'music' %>
-    Gigs
-  </h2>
+  <%= render partial: 'shared/title', locals: { title: 'Gigs', icon: 'music'} %>
 
   <div class="sticky">
     <%= link_to '#', id: "gigs-sync", class: "btn", remote: true do %>

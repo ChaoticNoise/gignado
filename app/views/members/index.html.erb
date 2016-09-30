@@ -1,9 +1,5 @@
 <div class="page-header">
-  <h2>
-    <%= fa_icon 'users' %>
-    Members
-  </h2>
-
+  <%= render partial: 'shared/title', locals: { title: 'Members', icon: 'users'} %>
 
   <div class="sticky">
     <%= render partial: 'query_form' %>

@@ -48,7 +48,7 @@ class Member < ApplicationRecord
   end
 
   def display_name
-    self.first_name
+    [self.first_name, self.last_name].join(" ")
   end
 
   def access_allowed

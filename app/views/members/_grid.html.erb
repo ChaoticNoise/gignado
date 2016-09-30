@@ -4,11 +4,10 @@
       <div class="panel-heading"><%= section.capitalize.pluralize %></div>
       <div class="panel-body">
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Telephone</th>
                 <th>Status</th>
@@ -19,12 +18,15 @@
             <tbody>
               <% members.where(section: section).each do |member| %>
                 <tr>
-                  <td width="17%"><%= member.first_name %></td>
-                  <td width="17%"><%= member.last_name %></td>
-                  <td width="17%"><%= member.email %></td>
-                  <td width="17%"><%= member.telephone %></td>
-                  <td width="17%"><%= member.status %></td>
-                  <td width="17%"><%= link_to 'Edit', edit_member_path(member), class: 'pull-right' %></td>
+                  <td width="25%"><%= member %></td>
+                  <td width="25%"><%= member.email %></td>
+                  <td width="25%"><%= member.telephone %></td>
+                  <td width="25%"><%= member.status %></td>
+                  <td class="col-fixed-icon">
+                    <%= link_to edit_member_path(member) do %>
+                      <%= fa_icon "pencil" %>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

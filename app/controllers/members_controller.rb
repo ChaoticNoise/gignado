@@ -1,13 +1,12 @@
 class MembersController < ApplicationController
 
-  helper_method :member, :members, :form
+  helper_method :member, :members, :query_form
 
   # GET /members
   def index
   end
 
   def query
-
     respond_to do |format|
       format.js
     end
@@ -37,13 +36,13 @@ class MembersController < ApplicationController
     @member ||= Member.find(params[:id])
   end
 
-  def form
-    @form ||= MemberQueryForm.new(Member::IndexQuery.new)
+  def query_form
+    @query_form ||= MemberQueryForm.new(Member::IndexQuery.new)
   end
 
   def members
-    form.validate(params[:member_query] || { trial: "1", active: "1" })
-    form.sync
-    form.model.members
+    query_form.validate(params[:member_query] || { trial: "1", active: "1" })
+    query_form.sync
+    query_form.model.members.order(:first_name)
   end
 end

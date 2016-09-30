@@ -35,7 +35,7 @@ SimpleNavigation::Configuration.run do |navigation|
   #navigation.ignore_anchors_on_auto_highlight = true
 
   # If this option is set to true, all item names will be considered as safe (passed through html_safe). Defaults to false.
-  #navigation.consider_item_names_as_safe = false
+  navigation.consider_item_names_as_safe = true
 
   # Define the primary navigation
   navigation.items do |primary|
@@ -56,8 +56,8 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-    primary.item :gigs_nav, 'Gigs', gigs_path, highlights_on: %r((/gigs))
-    primary.item :members_nav, 'Members', members_path
+    primary.item :gigs_nav, '<i class="fa fa-music"></i> Gigs', gigs_path, highlights_on: %r((/gigs))
+    primary.item :members_nav, '<i class="fa fa-users"></i> Members', members_path
 
     # Add an item which has a sub navigation (same params, but with block)
     #primary.item :key_2, 'name', url, options do |sub_nav|

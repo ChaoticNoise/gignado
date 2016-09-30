@@ -1,26 +1,23 @@
 <div class="page-header">
-  <h2>Gigs</h2>
-  <div class="row">
-    <div class="col-md-12">
-      <%= link_to '#', id: "gigs-sync", class: "btn", remote: true do %>
-        <%= fa_icon 'refresh' %> Sync
-      <% end %>
-      <div id="last-sync" style="display: inline-block;">
-        <%= render partial: 'last_sync' %>
-      </div>
-      <%= link_to new_gig_path, class: "btn btn-primary pull-right" do %>
-        <%= fa_icon 'plus' %> New Gig
-      <% end %>
+  <h2>
+    <%= fa_icon 'music', data: {toggle: 'tooltip', placement:'bottom'}, title: 'Gig' %>
+    &nbsp;
+    Gigs
+  </h2>
+
+  <div class="sticky">
+    <%= link_to '#', id: "gigs-sync", class: "btn", remote: true do %>
+      <%= fa_icon 'refresh' %> Sync
+    <% end %>
+    <div id="last-sync" style="display: inline-block;">
+      <%= render partial: 'last_sync' %>
     </div>
+    <%= link_to new_gig_path, class: "btn btn-primary pull-right" do %>
+      <%= fa_icon 'plus' %> New Gig
+    <% end %>
   </div>
 </div>
 
 <div id="gigs-grid">
   <%= render partial: 'grid', locals: { gigs: @gigs } %>
 </div>
-
-<hr/>
-
-<%= link_to new_gig_path, class: "btn btn-primary pull-right" do %>
-  <%= fa_icon 'plus' %> New Gig
-<% end %>

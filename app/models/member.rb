@@ -56,13 +56,9 @@ class Member < ApplicationRecord
   end
 
   def access_allowed=(val)
-    if val.is_a?(String) && val.to_i == 1
+    if val.to_i == 1
       self.activated_at = Time.zone.now
-    elsif val.is_a?(String) && val.to_i != 1
-      self.activated_at = nil
-    elsif val.is_a?(Boolean) && val
-      self.activated_at = Time.zone.now
-    elsif val.is_a?(Boolean) && !val
+    else
       self.activated_at = nil
     end
   end

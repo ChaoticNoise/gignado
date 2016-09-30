@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
 
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks"}
-  resources :members, :only => [:index, :edit, :update]
+  resources :members, :only => [:index, :edit, :update] do
+    collection do
+      get 'query'
+    end
+  end
 
   resources :errors, :only => [] do
     collection do

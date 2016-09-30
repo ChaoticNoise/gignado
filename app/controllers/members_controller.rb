@@ -4,7 +4,12 @@ class MembersController < ApplicationController
 
   # GET /members
   def index
-    @members = Member.all
+    @form = MemberQueryForm.new(Member::IndexQuery.new)
+    @members = Member.order(:first_name)
+  end
+
+  def query
+    @members = Member::IndexQuery.new(params[:member_query]).members
   end
 
   # GET /members/1/edit

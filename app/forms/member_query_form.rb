@@ -1,11 +1,11 @@
 class MemberQueryForm < Reform::Form
-  property :trial
-  property :active
+  property :trial, default: true
+  property :active, default: true
   property :sporadic
   property :on_break
-  property :all
+  property :other
 
-  property :patch
+  property :patches
   property :bus_drivers
-  property :section_lead
+  property :section_leads
 end

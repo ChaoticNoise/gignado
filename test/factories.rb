@@ -11,6 +11,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     activated_at { Time.now() }
     pwd = Faker::Internet.password(8)
+    date_joined '1/2/2016'
     password pwd
     password_confirmation pwd
   end

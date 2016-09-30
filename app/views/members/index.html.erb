@@ -1,27 +1,41 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Members</h1>
-
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th colspan="1"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @members.each do |member| %>
-        <tr>
-          <td><%= member.first_name %></td>
-          <td><%= member.last_name %></td>
-          <td><%= member.email %></td>
-          <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="page-header">
+  <h2>Members</h2>
 </div>
+  <%= render partial: 'query_form' %>
+
+
+<%- Member.sections.keys.reverse.each do |section| -%>
+  <div class="panel panel-default">
+
+    <div class="panel-heading"><%= section.capitalize.pluralize %></div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Status</th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @members.where(section: section).each do |member| %>
+              <tr>
+                <td><%= member.first_name %></td>
+                <td><%= member.last_name %></td>
+                <td><%= member.email %></td>
+                <td><%= member.telephone %></td>
+                <td><%= member.status %></td>
+                <td><%= link_to 'Edit', edit_member_path(member) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

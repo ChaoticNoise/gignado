@@ -19,6 +19,10 @@
 
 
 <div class="container">
+  <%- if notice.present? %>
+    <%= render partial: 'shared/alerts', locals: { type: 'success', text: notice } %>
+  <% end %>
+
   <%= yield %>
 </div>
 

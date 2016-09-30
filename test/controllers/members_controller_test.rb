@@ -11,7 +11,8 @@ class MembersControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:members)
+
+    assert_not_nil @controller.instance_eval{ members }
   end
 
   test "should get edit" do

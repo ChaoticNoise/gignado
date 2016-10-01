@@ -8,14 +8,14 @@
               <%= fa_icon rehearsal_status_to_icon(rehearsal.status), data: {toggle: 'tooltip', placement:'bottom'}, title: rehearsal.status %>
             </span>
           </td>
-          <td class="col-xs-1">
+          <td class="col-xs-2">
             <%= link_to rehearsal do %>
-              <%= rehearsal.start_time.strftime("%a %-m/%-d") %>
+              <%= rehearsal.start_time.strftime("%b %d, %Y") %>
             <% end %>
           </td>
-          <td class="col-xs-6">
+          <td class="col-xs-5">
             <%= link_to rehearsal do %>
-              <%= rehearsal.location %>
+              <%= rehearsal.title %>
             <% end %>
           </td>
           <td class="col-xs-5">

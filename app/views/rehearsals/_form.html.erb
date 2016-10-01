@@ -1,0 +1,28 @@
+<%= simple_form_for @form do |f| %>
+  <% if @form.errors.messages.any? %>
+    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@form.errors.messages.count, 'error')} prohibited this gig from being saved." } %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :start_time, as: :datetime, ampm: true %>
+      <%= f.input :end_time, as: :datetime, ampm: true %>
+      <%= f.input :location %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :status, collection: Rehearsal.statuses.keys.to_a %>
+      <%= f.input :rehearsal_pic_id, collection: Member.active.order(:first_name) %>
+    </div>
+  </div>
+
+  <%= f.input :details, as: :text %>
+
+  <hr/>
+
+  <div class="pull-right">
+    <%= link_to 'Cancel', rehearsals_path, class: "btn" %>
+    <%= f.button :button, class: "btn btn-primary" do %>
+      Create
+    <% end %>
+  </div>
+<% end %>

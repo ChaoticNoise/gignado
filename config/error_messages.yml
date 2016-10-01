@@ -1,0 +1,3 @@
+en:
+  errors:
+    after_start_time?: "can't be before the start"

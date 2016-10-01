@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <% rehearsals.each do |rehearsal| %>
+        <tr class="row">
+          <td class="col-fixed-icon">
+            <span class="status status-<%= rehearsal.status %>">
+              <%= fa_icon rehearsal_status_to_icon(rehearsal.status), data: {toggle: 'tooltip', placement:'bottom'}, title: rehearsal.status %>
+            </span>
+          </td>
+          <td class="col-xs-1">
+            <%= link_to rehearsal do %>
+              <%= rehearsal.start_time.strftime("%a %-m/%-d") %>
+            <% end %>
+          </td>
+          <td class="col-xs-6">
+            <%= link_to rehearsal do %>
+              <%= rehearsal.location %>
+            <% end %>
+          </td>
+          <td class="col-xs-5">
+            <span class="pull-right">
+              <%= rehearsal.rehearsal_pic %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

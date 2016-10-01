@@ -368,6 +368,7 @@ DEPENDENCIES
   codacy-coverage
   coffee-rails (~> 4.2)
   devise (~> 4.2)
+  dry-types
   dry-validation
   factory_girl_rails (~> 4.0)
   faker (~> 1.5)

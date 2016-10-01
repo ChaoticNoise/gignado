@@ -28,4 +28,9 @@ FactoryGirl.define do
     title { Faker::Name.name + "'s Wedding" }
     confirmation_deadline Time.now()
   end
+
+  factory :rehearsal, parent: :event, class: 'Rehearsal' do
+    title { Faker::Name.name }
+    association :rehearsal_pic, factory: :member
+  end
 end

@@ -8,9 +8,6 @@ class Event < ApplicationRecord
   store :data, accessors: [ :uid, :points ]
   attr_accessor :base_url
 
-  validates :start_time, :end_time, :title, presence: true
-  validate :start_before_end
-
   before_save :confirm_uid
 
   scope :upcoming, -> { where("end_time > ?", Time.zone.today) }

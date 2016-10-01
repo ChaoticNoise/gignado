@@ -1,0 +1,14 @@
+<div class="page-header">
+  <%= render partial: 'shared/title', locals: { title: 'Rehearsals', icon: 'bullhorn'} %>
+
+  <div class="sticky clearfix">
+
+    <%= link_to new_rehearsal_path, class: "btn btn-primary pull-right" do %>
+      <%= fa_icon 'plus' %> New
+    <% end %>
+  </div>
+</div>
+
+<div id="rehearsals-grid">
+  <%= render partial: 'grid', locals: { rehearsals: @rehearsals } %>
+</div>

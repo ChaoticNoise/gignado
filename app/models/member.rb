@@ -14,11 +14,13 @@ class Member < ApplicationRecord
   enum status: {trial: 0, active: 1, sporadic: 2, on_break: 3, non_member: 4, officially_quit: 5, unofficially_quit: 6,  failed_trial: 7, suspended: 8, kicked_out: 9}
   enum section: {no_section: 0, percussion: 1, saxophone: 2, trumpet: 3, trombone: 4, sousaphone: 5, bruiser: 6}
 
-  has_many :booker_gigs, class_name: 'Gig', foreign_key: 'booker_id', dependent: :nullify
-  has_many :day_pic_gigs, class_name: 'Gig', foreign_key: 'day_pic_id', dependent: :nullify
-  has_many :gig_pic_gigs, class_name: 'Gig', foreign_key: 'gig_pic_id', dependent: :nullify
-  has_many :bus_pic_gigs, class_name: 'Gig', foreign_key: 'bus_pic_id', dependent: :nullify
-  #has_many :rehearsal_pic_events, class_name: 'Event', foreign_key: 'rehearsal_pic_id', dependent: :nullify
+  has_many :booker_events, class_name: 'Gig', foreign_key: 'booker_id', dependent: :nullify
+  has_many :day_pic_events, class_name: 'Gig', foreign_key: 'day_pic_id', dependent: :nullify
+  has_many :gig_pic_events, class_name: 'Gig', foreign_key: 'gig_pic_id', dependent: :nullify
+  has_many :bus_pic_events, class_name: 'Gig', foreign_key: 'bus_pic_id', dependent: :nullify
+  has_many :rehearsal_pic_events, class_name: 'Rehearsal', foreign_key: 'rehearsal_pic_id', dependent: :nullify
+
+  scope :active, -> { where(status: :active) }
 
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)

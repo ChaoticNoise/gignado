@@ -61,6 +61,7 @@ gem 'active_job_status', git: 'https://github.com/cdale77/active_job_status.git'
 gem 'reform', '>= 2.2.0'
 gem 'reform-rails'
 gem 'dry-validation'
+gem 'dry-types'
 gem 'simple_form', '~> 3.3'
 
 group :development, :test do

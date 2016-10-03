@@ -17,4 +17,5 @@
 //= require vendor/picker
 //= require vendor/picker.date
 //= require vendor/picker.time
+//= require vendor/strftime
 //= require_tree .

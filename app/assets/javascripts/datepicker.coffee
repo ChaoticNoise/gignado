@@ -1,4 +1,5 @@
 $(document).on 'turbolinks:load', ->
 
-  $('.datepicker').pickadate()
-  $('.timepicker').pickatime( interval: 15)
+  $('.datepicker').pickadate( format: 'mmm d, yyyy')
+  $('.timepicker').pickatime( interval: 15, format: 'h:iA')
+  

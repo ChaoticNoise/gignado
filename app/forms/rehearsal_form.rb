@@ -1,18 +1,17 @@
 require "reform/form/coercion"
 
 class RehearsalForm < Reform::Form
-  feature Reform::Form::ActiveModel::FormBuilderMethods
-  feature Reform::Form::MultiParameterAttributes
+  feature Coercion
 
   property :status
   property :details
   property :location
-  property :date, virtual: true
-  property :start_time
-  property :start_time_display, virtual: true
-  property :end_time
-  property :end_time_display, virtual: true
+  property :start_time, type: Types::Form::DateTime
+  property :end_time, type: Types::Form::DateTime
   property :rehearsal_pic_id
+  property :date, virtual: true
+  property :start_time_display, virtual: true
+  property :end_time_display, virtual: true
 
   validation do
     configure do

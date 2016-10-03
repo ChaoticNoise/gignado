@@ -10,7 +10,7 @@ class RehearsalsController < ApplicationController
   end
 
   def new
-    @form = RehearsalForm.new(Rehearsal.new)
+    @form = RehearsalForm.new(Rehearsal.new(rehearsal_pic_id: current_member.id))
   end
 
   def edit

@@ -1,0 +1,75 @@
+<div class="page-header">
+  <%= render partial: 'shared/title', locals: { title: rehearsal.title, icon: 'bullhorn'} %>
+
+  <div class="sticky clearfix">
+    <%= link_to edit_rehearsal_path(rehearsal), class: "btn btn-primary pull-right" do %>
+      <%= fa_icon 'pencil' %> Edit
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Info
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-3">
+        <strong>Status</strong>
+      </div>
+      <div class="col-xs-9">
+        <span class="status status-<%= rehearsal.status %>">
+          <%= fa_icon rehearsal_status_to_icon(rehearsal.status), data: {toggle: 'tooltip', placement:'bottom'}, title: rehearsal.status %>
+        </span>
+        <%= rehearsal.status.humanize %>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-xs-3">
+        <strong>Date</strong>
+      </div>
+      <div class="col-xs-9">
+        <%= rehearsal.start_time.strftime("%-d %B, %Y") %>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-xs-3">
+        <strong>Time</strong>
+      </div>
+      <div class="col-xs-9">
+        <%= "Start: #{rehearsal.start_time.strftime("%l:%M%p")}" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= "End: #{rehearsal.end_time.strftime("%l:%M%p")}" %>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-xs-3">
+        <strong>Location</strong>
+      </div>
+      <div class="col-xs-9">
+        <%= rehearsal.location %>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-xs-3">
+        <strong>Rehearsal PIC</strong>
+      </div>
+      <div class="col-xs-9">
+        <%= rehearsal.rehearsal_pic %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Details
+  </div>
+  <div class="panel-body">
+    <%= rehearsal.details %>
+  </div>
+</div>

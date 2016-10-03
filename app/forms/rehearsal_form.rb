@@ -7,8 +7,11 @@ class RehearsalForm < Reform::Form
   property :status
   property :details
   property :location
-  property :start_time, :multi_params => true
-  property :end_time, :multi_params => true
+  property :date, virtual: true
+  property :start_time
+  property :start_time_display, virtual: true
+  property :end_time
+  property :end_time_display, virtual: true
   property :rehearsal_pic_id
 
   validation do
@@ -25,4 +28,5 @@ class RehearsalForm < Reform::Form
     required(:end_time).filled(:after_start_time?)
     required(:rehearsal_pic_id).filled
   end
+
 end

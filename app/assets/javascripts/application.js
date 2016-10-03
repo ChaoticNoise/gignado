@@ -14,4 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require vendor/picker
+//= require vendor/picker.date
+//= require vendor/picker.time
 //= require_tree .

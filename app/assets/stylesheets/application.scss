@@ -1,7 +1,9 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "vendor/pickadate/default";
+@import "vendor/pickadate/default.date";
+@import "vendor/pickadate/default.time";
 
 @import "shared/navbar";
 @import "shared/status";
@@ -18,4 +20,9 @@ body {
 .sticky {
   padding: 5px 0;
   background-color: white;
+}
+
+// Bootstrap overrides
+.panel-default .panel-heading {
+  background-color: #BBB;
 }

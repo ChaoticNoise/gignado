@@ -42,12 +42,7 @@ class Event < ApplicationRecord
   end
 
   protected
-  def start_before_end
-    if start_time.present? && end_time.present? && start_time > end_time
-      errors.add(:end_time, "can't be before the start")
-    end
-  end
-
+  
   def confirm_uid
     ical_event unless uid
   end

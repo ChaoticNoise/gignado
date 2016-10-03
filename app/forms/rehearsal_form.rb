@@ -19,12 +19,13 @@ class RehearsalForm < Reform::Form
       option :form
 
       def after_start_time?(value)
-        form.start_time <= value
+        form.start_time <= form.end_time
       end
     end
 
-    required(:start_time).filled
-    required(:end_time).filled(:after_start_time?)
+    required(:date).filled
+    required(:start_time_display).filled
+    required(:end_time_display).filled(:after_start_time?)
     required(:rehearsal_pic_id).filled
   end
 

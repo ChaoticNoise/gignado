@@ -13,7 +13,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>Contact Info</h4>
+          Contact Info
         </div>
         <div class="panel-body">
           <%= f.input :first_name, placeholder: 'First Name' %>
@@ -27,7 +27,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>Band Info</h4>
+          Band Info
         </div>
         <div class="panel-body">
           <%= f.input :section, collection: Member.sections.keys.to_a %>
@@ -43,7 +43,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>Tour Info</h4>
+      Tour Info
     </div>
     <div class="panel-body">
       <%= f.input :emergency_contact, as: 'text', placeholder: 'Contact Name and Info' %>

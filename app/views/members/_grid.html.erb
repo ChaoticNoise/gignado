@@ -1,7 +1,7 @@
 <%- Member.sections.keys.reverse.each do |section| -%>
   <%- if members.where(section: section).exists? %>
     <div class="panel panel-default">
-      <div class="panel-heading"><%= section.capitalize.pluralize %></div>
+      <div class="panel-heading"><%= section.humanize.pluralize %></div>
       <div class="panel-body">
         <div class="table-responsive">
           <table class="table table-striped">

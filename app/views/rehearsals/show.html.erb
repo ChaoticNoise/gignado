@@ -24,7 +24,6 @@
         <%= rehearsal.status.humanize %>
       </div>
     </div>
-    <br />
     <div class="row">
       <div class="col-xs-3">
         <strong>Date</strong>
@@ -33,7 +32,6 @@
         <%= rehearsal.start_time.in_time_zone.strftime("%-d %B, %Y") %>
       </div>
     </div>
-    <br />
     <div class="row">
       <div class="col-xs-3">
         <strong>Time</strong>
@@ -44,7 +42,6 @@
         <%= "End: #{rehearsal.end_time.localtime.strftime("%l:%M %p")}" %>
       </div>
     </div>
-    <br />
     <div class="row">
       <div class="col-xs-3">
         <strong>Location</strong>
@@ -53,7 +50,6 @@
         <%= rehearsal.location %>
       </div>
     </div>
-    <br />
     <div class="row">
       <div class="col-xs-3">
         <strong>Rehearsal PIC</strong>

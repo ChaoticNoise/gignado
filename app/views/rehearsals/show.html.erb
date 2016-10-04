@@ -13,48 +13,48 @@
     Info
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-xs-3">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
         <strong>Status</strong>
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-9 data-value">
         <span class="status status-<%= rehearsal.status %>">
           <%= fa_icon rehearsal_status_to_icon(rehearsal.status), data: {toggle: 'tooltip', placement:'bottom'}, title: rehearsal.status %>
         </span>
         <%= rehearsal.status.humanize %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-3">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
         <strong>Date</strong>
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-9 data-value">
         <%= rehearsal.start_time.in_time_zone.strftime("%-d %B, %Y") %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-3">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
         <strong>Time</strong>
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-9 data-value">
         <%= "Start: #{rehearsal.start_time.localtime.strftime("%l:%M %p")}" %>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <%= "End: #{rehearsal.end_time.localtime.strftime("%l:%M %p")}" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-3">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
         <strong>Location</strong>
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-9 data-value">
         <%= rehearsal.location %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-3">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
         <strong>Rehearsal PIC</strong>
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-9 data-value">
         <%= rehearsal.rehearsal_pic %>
       </div>
     </div>

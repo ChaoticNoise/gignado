@@ -27,3 +27,14 @@ body {
   font-size: 1.2em;
   background-color: #DDD;
 }
+
+.data {
+  padding-bottom: 10px;
+
+  .data-label {
+    font-weight: bold;
+  }
+
+  .data-value {
+  }
+}

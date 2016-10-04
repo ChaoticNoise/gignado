@@ -1,139 +1,127 @@
-<%- if notice.present? %>
-  <%= render partial: 'shared/alerts', locals: { type: 'success', text: notice } %>
-<% end %>
-
 <div class="page-header">
   <%= render partial: 'shared/title', locals: { title: @gig.title, icon: 'music'} %>
+
+  <div class="sticky clearfix">
+    <%= link_to edit_gig_path(@gig), class: "btn btn-primary pull-right" do %>
+      <%= fa_icon 'pencil' %> Edit
+    <% end %>
+  </div>
 </div>
 
-<div class="gig-data">
-  <div class="row">
-    <div class="col-sm-3 gig-label">
-      Status
-    </div>
-    <div class="col-sm-9 gig-value">
-      <span class="status status-<%= @gig.status %>">
-        <%= fa_icon gig_status_to_icon(@gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: @gig.status %>
-      </span>
-      <%= @gig.status %>
-    </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Info
   </div>
+  <div class="panel-body">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Status
+      </div>
+      <div class="col-xs-9 data-value">
+        <span class="status status-<%= @gig.status %>">
+          <%= fa_icon gig_status_to_icon(@gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: @gig.status %>
+        </span>
+        <%= @gig.status %>
+      </div>
+    </div>
 
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Start Time
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Start Time
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.start_time.strftime("%b %d, %Y %I:%M%P") %>
+      </div>
     </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.start_time.strftime("%b %d, %Y %I:%M%P") %>
-    </div>
-  </div>
 
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      End Time
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        End Time
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.end_time.strftime("%b %d, %Y %I:%M%P") %>
+      </div>
     </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.end_time.strftime("%b %d, %Y %I:%M%P") %>
-    </div>
-  </div>
 
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Confirmation Deadline
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Location
+      </div>
+      <div class="col-xs-9 data-value">
+        <a href="https://maps.google.com?q=<%= @gig.location %>" target="_blank"><%= @gig.location %></a>
+      </div>
     </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") if @gig.confirmation_deadline %>
-    </div>
-  </div>
 
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Booker
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Confirm By
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") if @gig.confirmation_deadline %>
+      </div>
     </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.booker %>
-    </div>
-  </div>
 
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Day PIC
-    </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.day_pic %>
-    </div>
-  </div>
-
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Gig PIC
-    </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.gig_pic %>
-    </div>
-  </div>
-
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Bus PIC
-    </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.bus_pic %>
-    </div>
-  </div>
-
-  <div class="row gig-data">
-    <div class="col-sm-3 gig-label">
-      Payment
-    </div>
-    <div class="col-sm-9 gig-value">
-
-      <%- if @gig.payment.present? %><p><%= @gig.payment %></p><% end %>
-      <p><%= @gig.payment_status %></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-3 gig-label">
-      Location
-    </div>
-    <div class="col-sm-9 gig-value" >
-      <a href="https://maps.google.com?q=<%= @gig.location %>" target="_blank"><%= @gig.location %></a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-3 gig-label">
-      Merch Needs
-    </div>
-    <div class="col-sm-9 gig-value" >
-      <%= @gig.merch_needs!='0' ? 'yes' : 'no' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-3 gig-label">
-      Plus Ones Allowed
-    </div>
-    <div class="col-sm-9 gig-value" >
-      <%= @gig.plus_ones_allowed!='0' ? 'yes' : 'no' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-3 gig-label">
-      Details
-    </div>
-    <div class="col-sm-9 gig-value">
-      <%= @gig.details %>
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Payment
+      </div>
+      <div class="col-xs-9 data-value">
+        <%- if @gig.payment.present? %><p>
+          <%= @gig.payment %></p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<hr/>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      People In Charge
+  </div>
+  <div class="panel-body">
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Booker
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.booker %>
+      </div>
+    </div>
 
-<div class="pull-right">
-  <%= link_to edit_gig_path(@gig), class: 'btn btn-primary' do %>
-    <%= fa_icon 'pencil' %> Edit Gig
-  <% end %>
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Day PIC
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.day_pic %>
+      </div>
+    </div>
+
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Gig PIC
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.gig_pic %>
+      </div>
+    </div>
+
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Bus PIC
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= @gig.bus_pic %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Details
+  </div>
+  <div class="panel-body">
+    <%= @gig.details %>
+  </div>
 </div>

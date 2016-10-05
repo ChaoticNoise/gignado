@@ -22,7 +22,16 @@ class RehearsalsControllerTest < ActionController::TestCase
 
   test "should create rehearsal" do
     assert_difference('Rehearsal.count') do
-      post :create, params: { rehearsal: { details: @rehearsal.details, end_time: @rehearsal.end_time, location: @rehearsal.location, start_time: @rehearsal.start_time, title: @rehearsal.title, status: @rehearsal.status, rehearsal_pic: @rehearsal.rehearsal_pic } }
+      post :create, params: {
+        rehearsal: {
+          details: @rehearsal.details, end_time: @rehearsal.end_time,
+          location: @rehearsal.location, start_time: @rehearsal.start_time,
+          title: @rehearsal.title, status: @rehearsal.status,
+          start_time_display: 'bar',
+          end_time_display: 'biz',
+          date: 'foo',
+          rehearsal_pic_id: @rehearsal.rehearsal_pic.id
+        } }
     end
 
     assert_redirected_to rehearsals_path
@@ -39,7 +48,17 @@ class RehearsalsControllerTest < ActionController::TestCase
   end
 
   test "should update rehearsal" do
-    patch :update, params: { id: @rehearsal, rehearsal: { details: @rehearsal.details, end_time: @rehearsal.end_time, location: @rehearsal.location, start_time: @rehearsal.start_time, title: @rehearsal.title, status: @rehearsal.status, rehearsal_pic: @rehearsal.rehearsal_pic } }
+    patch :update, params: {
+      id: @rehearsal,
+      rehearsal: {
+        details: @rehearsal.details, end_time: @rehearsal.end_time,
+        location: @rehearsal.location, start_time: @rehearsal.start_time,
+        title: @rehearsal.title, status: @rehearsal.status,
+        start_time_display: 'bar',
+        end_time_display: 'biz',
+        date: 'foo',
+        rehearsal_pic_id: @rehearsal.rehearsal_pic.id
+      } }
     assert_redirected_to rehearsals_path
   end
 end

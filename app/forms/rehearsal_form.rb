@@ -26,6 +26,8 @@ class RehearsalForm < Reform::Form
     required(:date).filled
     required(:start_time_display).filled
     required(:end_time_display).filled(:after_start_time?)
+    required(:start_time).filled
+    required(:end_time).filled
     required(:rehearsal_pic_id).filled
   end
 

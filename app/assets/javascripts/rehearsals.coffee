@@ -11,7 +11,7 @@ $(document).on 'turbolinks:load', ->
   update_rehearsal_start_time = ->
     date = $("input#rehearsal_date").val()
     time = $("input#rehearsal_start_time_display").val()
-    $("input#rehearsal_start_time").val("#{date} #{time} -0800")
+    $("input#rehearsal_start_time").val(new Date("#{date} #{time}").toISOString())
 
   update_rehearsal_end_time = ->
     date = $("input#rehearsal_date").val()

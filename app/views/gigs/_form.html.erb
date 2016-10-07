@@ -1,65 +1,95 @@
-<%= simple_form_for(@gig) do |f| %>
-  <% if @gig.errors.any? %>
-    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@gig.errors.count, 'error')} prohibited this gig from being saved." } %>
+<%= simple_form_for(@form) do |f| %>
+  <% if @form.errors.messages.any? %>
+    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@form.errors.messages.count, 'error')} prohibited this gig from being saved." } %>
   <% end %>
 
   <%= f.input :title %>
-  <%= f.input :details %>
+
+  <%= f.input :call_time, as: :hidden %>
+  <%= f.input :start_time, as: :hidden %>
+  <%= f.input :end_time, as: :hidden %>
+  <%= f.input :confirmation_deadline, as: :hidden %>
 
   <div class="row">
-    <div class="col-xs-6">
-      <%= f.input :start_time, as: :datetime, ampm: true %>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Info
+        </div>
+        <div class="panel-body">
+
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :start_date_display, as: :string, label: 'Date', input_html: { class: 'datepicker' } %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :multi_day, as: :boolean %>
+              <%= f.input :end_date_display, as: :string, label: 'End Date', input_html: { class: 'datepicker' } %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4">
+              <%= f.input :call_time_display, as: :string, label: 'Call Time', input_html: {class: 'timepicker'} %>
+            </div>
+            <div class="col-xs-4">
+              <%= f.input :start_time_display, as: :string, label: 'Set Time', input_html: { class: 'timepicker' } %>
+            </div>
+            <div class="col-xs-4">
+              <%= f.input :end_time_display, as: :string, label: 'End Time', input_html: { class: 'timepicker' } %>
+            </div>
+          </div>
+
+          <%= f.input :location %>
+          <%= f.input :payment %>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-6">
-      <%= f.input :end_time, as: :datetime, ampm: true %>
+
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Status
+        </div>
+        <div class="panel-body">
+          <%= f.input :status, collection: Gig.statuses.keys.to_a %>
+          <%= f.input :confirmation_deadline_display, as: :string, label: 'Confirm By', input_html: { class: 'datepicker'} %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          People In Charge
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :booker_id, collection: Member.active.order(:first_name) %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :day_pic_id, collection: Member.active.order(:first_name) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :gig_pic_id, collection: Member.active.order(:first_name) %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :bus_pic_id, collection: Member.active.bus_drivers.order(:first_name) %>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
-  <%= f.input :location %>
 
-  <div class="row">
-    <div class="col-xs-6">
-      <%= f.input :confirmation_deadline, as: :date %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Details
     </div>
-    <div class="col-xs-6">
-      <%= f.input :status, collection: Gig.statuses.keys.to_a %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-6">
-      <%= f.association :booker %>
-    </div>
-    <div class="col-xs-6">
-      <%= f.association :day_pic %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-6">
-      <%= f.association :gig_pic %>
-    </div>
-    <div class="col-xs-6">
-      <%= f.association :bus_pic %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-6">
-      <%= f.input :payment %>
-    </div>
-    <div class="col-xs-6">
-      <%= f.input :payment_status, collection: Gig.payment_statuses.keys.to_a %>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.input :merch_needs, as: :boolean %>
-    </div>
-    <div class="col-sm-2">
-      <%= f.input :plus_ones_allowed, as: :boolean %>
+    <div class="panel-body">
+      <%= f.input :details, label: false, as: :text %>
     </div>
   </div>
 

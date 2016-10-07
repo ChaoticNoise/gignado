@@ -1,3 +1,7 @@
 en:
   errors:
-    after_start_time?: "can't be before the start"
+    before_set_date?: "after Set Date"
+    after_start_time?: "before Start Time"
+    after_set_date?: "before Date"
+    after_set_time?: "before Set Time"
+    before_set_time?: "after Set Time"

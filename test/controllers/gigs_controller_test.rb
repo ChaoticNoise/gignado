@@ -22,10 +22,20 @@ class GigsControllerTest < ActionController::TestCase
 
   test "should create gig" do
     assert_difference('Gig.count') do
-      post :create, params: { gig: { details: @gig.details, end_time: @gig.end_time, location: @gig.location, start_time: @gig.start_time, status: @gig.status, title: @gig.title, confirmation_deadline: @gig.confirmation_deadline } }
+      post :create, params: { gig: {
+        details: @gig.details, end_time: @gig.end_time, location: @gig.location,
+        start_time: @gig.start_time, status: @gig.status, title: @gig.title,
+        start_date_display: @gig.start_time.to_date,
+        start_time_display: @gig.start_time.to_time,
+        end_date_display: @gig.end_time.to_date,
+        end_time_display: @gig.end_time.to_time,
+        call_time: @gig.start_time,
+        call_time_display: @gig.start_time.to_time,
+        confirmation_deadline_display: @gig.confirmation_deadline.to_date,
+        confirmation_deadline: @gig.confirmation_deadline } }
     end
 
-    assert_redirected_to gig_path(assigns(:gig))
+    assert_redirected_to gigs_path
   end
 
   test "should show gig" do
@@ -39,15 +49,17 @@ class GigsControllerTest < ActionController::TestCase
   end
 
   test "should update gig" do
-    patch :update, params: { id: @gig, gig: { details: @gig.details, end_time: @gig.end_time, location: @gig.location, start_time: @gig.start_time, status: @gig.status, title: @gig.title, confirmation_deadline: @gig.confirmation_deadline } }
-    assert_redirected_to gig_path(assigns(:gig))
-  end
-
-  test "should destroy gig" do
-    assert_difference('Gig.count', -1) do
-      delete :destroy, params: { id: @gig }
-    end
-
+    patch :update, params: { id: @gig, gig: {
+      details: @gig.details, end_time: @gig.end_time, location: @gig.location,
+      start_time: @gig.start_time, status: @gig.status, title: @gig.title,
+      start_date_display: @gig.start_time.to_date,
+      start_time_display: @gig.start_time.to_time,
+      end_date_display: @gig.end_time.to_date,
+      end_time_display: @gig.end_time.to_time,
+      call_time: @gig.start_time,
+      call_time_display: @gig.start_time.to_time,
+      confirmation_deadline_display: @gig.confirmation_deadline.to_date,
+      confirmation_deadline: @gig.confirmation_deadline } }
     assert_redirected_to gigs_path
   end
 

@@ -21,6 +21,7 @@ class Member < ApplicationRecord
   has_many :rehearsal_pic_events, class_name: 'Rehearsal', foreign_key: 'rehearsal_pic_id', dependent: :nullify
 
   scope :active, -> { where(status: :active) }
+  scope :bus_drivers, -> { where(has_bus_insurance: true) }
 
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)

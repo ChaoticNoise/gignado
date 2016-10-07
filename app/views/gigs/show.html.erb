@@ -1,8 +1,8 @@
 <div class="page-header">
-  <%= render partial: 'shared/title', locals: { title: @gig.title, icon: 'music'} %>
+  <%= render partial: 'shared/title', locals: { title: gig.title, icon: 'music'} %>
 
   <div class="sticky clearfix">
-    <%= link_to edit_gig_path(@gig), class: "btn btn-primary pull-right" do %>
+    <%= link_to edit_gig_path(gig), class: "btn btn-primary pull-right" do %>
       <%= fa_icon 'pencil' %> Edit
     <% end %>
   </div>
@@ -18,19 +18,30 @@
         Status
       </div>
       <div class="col-xs-9 data-value">
-        <span class="status status-<%= @gig.status %>">
-          <%= fa_icon gig_status_to_icon(@gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: @gig.status %>
+        <span class="status status-<%= gig.status %>">
+          <%= fa_icon gig_status_to_icon(gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: gig.status %>
         </span>
-        <%= @gig.status %>
+        <%= gig.status %>
       </div>
     </div>
+
+    <%- if gig.call_time %>
+    <div class="row data">
+      <div class="col-xs-3 data-label">
+        Call Time
+      </div>
+      <div class="col-xs-9 data-value">
+        <%= gig.call_time.localtime.strftime("%I:%M %p") %>
+      </div>
+    </div>
+    <% end %>
 
     <div class="row data">
       <div class="col-xs-3 data-label">
         Start Time
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.start_time.strftime("%b %d, %Y %I:%M%P") %>
+        <%= gig.start_time.localtime.strftime("%b %-d, %Y %I:%M %p") %>
       </div>
     </div>
 
@@ -39,7 +50,7 @@
         End Time
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.end_time.strftime("%b %d, %Y %I:%M%P") %>
+        <%= gig.end_time.localtime.strftime("%b %-d, %Y %I:%M %p") %>
       </div>
     </div>
 
@@ -48,7 +59,7 @@
         Location
       </div>
       <div class="col-xs-9 data-value">
-        <a href="https://maps.google.com?q=<%= @gig.location %>" target="_blank"><%= @gig.location %></a>
+        <a href="https://maps.google.com?q=<%= gig.location %>" target="_blank"><%= gig.location %></a>
       </div>
     </div>
 
@@ -57,7 +68,7 @@
         Confirm By
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.confirmation_deadline.strftime("%b %d, %Y %I:%M%P") if @gig.confirmation_deadline %>
+        <%= gig.confirmation_deadline.strftime("%b %-d, %Y") if gig.confirmation_deadline %>
       </div>
     </div>
 
@@ -66,8 +77,8 @@
         Payment
       </div>
       <div class="col-xs-9 data-value">
-        <%- if @gig.payment.present? %><p>
-          <%= @gig.payment %></p>
+        <%- if gig.payment.present? %><p>
+          <%= gig.payment %></p>
         <% end %>
       </div>
     </div>
@@ -84,7 +95,7 @@
         Booker
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.booker %>
+        <%= gig.booker %>
       </div>
     </div>
 
@@ -93,7 +104,7 @@
         Day PIC
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.day_pic %>
+        <%= gig.day_pic %>
       </div>
     </div>
 
@@ -102,7 +113,7 @@
         Gig PIC
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.gig_pic %>
+        <%= gig.gig_pic %>
       </div>
     </div>
 
@@ -111,7 +122,7 @@
         Bus PIC
       </div>
       <div class="col-xs-9 data-value">
-        <%= @gig.bus_pic %>
+        <%= gig.bus_pic %>
       </div>
     </div>
   </div>
@@ -122,6 +133,6 @@
     Details
   </div>
   <div class="panel-body">
-    <%= @gig.details %>
+    <%= gig.details %>
   </div>
 </div>

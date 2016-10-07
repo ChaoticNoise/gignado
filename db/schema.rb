@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930221130) do
+ActiveRecord::Schema.define(version: 20161005212001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160930221130) do
     t.integer  "rehearsal_pic_id"
     t.datetime "synced_at"
     t.string   "gigo_key"
+    t.datetime "call_time"
     t.index ["data"], name: "index_events_on_data", using: :gin
   end
 

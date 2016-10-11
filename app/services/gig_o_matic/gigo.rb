@@ -10,10 +10,11 @@ class GigOMatic::Gigo < OpenStruct
 
   def _start
     date = self.gig_date
-    time = [self.gig_call, self.gig_set, "12:00am"].find{|i| i.present?}
-    DateTime.strptime("#{date} #{time}", '%m/%d/%Y %l:%M%P')
+    time = fix_time([self.gig_call, self.gig_set, "12:00am"].find{|i| i.present?})
+    offset = "-0800"
+    DateTime.strptime("#{date} #{time} #{offset}", '%m/%d/%Y %l:%M%P %z').localtime
   rescue
-    DateTime.now
+    Time.zone.now
   end
 
   def end
@@ -22,10 +23,11 @@ class GigOMatic::Gigo < OpenStruct
 
   def _end
     date = [self.gig_enddate, self.gig_date].find{|i| i.present?}
-    time = [self.gig_end, "11:59pm"].find{|i| i.present?}
-    DateTime.strptime("#{date} #{time}", '%m/%d/%Y %l:%M%P')
+    time = fix_time([self.gig_end, "11:59pm"].find{|i| i.present?})
+    offset = "-0800"
+    DateTime.strptime("#{date} #{time} #{offset}", '%m/%d/%Y %l:%M%P %z').localtime
   rescue
-    DateTime.now
+    Time.zone.now
   end
 
   def details
@@ -42,6 +44,13 @@ class GigOMatic::Gigo < OpenStruct
 
   def key
     self.gk
+  end
+
+  private
+
+  def fix_time(time)
+    time = "#{time}am" if !(time =~ /(am|pm)/)
+    time
   end
 
 end

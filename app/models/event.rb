@@ -57,6 +57,10 @@ class Event < ApplicationRecord
     self.timezone.utc_to_local(self.end_time)
   end
 
+  def local_confiramtion_deadline
+    self.timezone.utc_to_local(self.confirmation_deadline)
+  end
+
   protected
 
   def confirm_uid

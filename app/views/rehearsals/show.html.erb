@@ -1,12 +1,11 @@
-<div class="page-header">
+<div class="sticky-header">
   <%= render partial: 'shared/title', locals: { title: rehearsal.title, icon: 'bullhorn'} %>
 
-  <div class="sticky clearfix">
-    <%= link_to edit_rehearsal_path(rehearsal), class: "btn btn-primary pull-right" do %>
-      <%= fa_icon 'pencil' %> Edit
-    <% end %>
-  </div>
+  <%= link_to edit_rehearsal_path(rehearsal), class: "btn btn-primary pull-right" do %>
+    <%= fa_icon 'pencil' %> Edit
+  <% end %>
 </div>
+&nbsp;
 
 <div class="panel panel-default">
   <div class="panel-heading">

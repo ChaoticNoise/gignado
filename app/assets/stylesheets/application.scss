@@ -17,9 +17,17 @@ body {
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
-.sticky {
-  padding: 5px 0;
+h2 {
+  display: inline-block;
+  padding: 0 0;
+  margin: 0 0;
+}
+
+.sticky-header {
   background-color: white;
+  z-index: 1000 !important;
+  border-bottom: 1px solid #EEE;
+  padding: 10px 0;
 }
 
 // Bootstrap overrides

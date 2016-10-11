@@ -1,2 +1,2 @@
 $(document).on 'turbolinks:load', ->
-  $(".sticky").sticky({topSpacing:50})
+  $(".sticky-header").sticky({topSpacing:50})

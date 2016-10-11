@@ -1,6 +1,7 @@
-<div class="page-header">
+<div class="sticky-header">
   <%= render partial: 'shared/title', locals: { title: member, icon: 'users'} %>
 </div>
+&nbsp;
 
 <%= simple_form_for @form do |f| %>
   <% if @form.errors.messages.any? %>

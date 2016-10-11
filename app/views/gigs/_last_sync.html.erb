@@ -1,3 +1,1 @@
-<span class="label label-default">
-  Last synced: <%= sync_date ? "#{time_ago_in_words(sync_date)} ago" : 'never' %>
-</span>
+<%= sync_date ? "#{time_ago_in_words(sync_date)} ago" : 'never' %>

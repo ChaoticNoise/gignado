@@ -1,18 +1,17 @@
-<div class="page-header">
+<div class="sticky-header">
   <%= render partial: 'shared/title', locals: { title: 'Gigs', icon: 'music'} %>
 
-  <div class="sticky">
+  <div class="pull-right">
     <%= link_to '#', id: "gigs-sync", class: "btn", remote: true do %>
-      <%= fa_icon 'refresh' %> Sync
+      <%= fa_icon 'refresh' %>
+      <span id="last-sync"><%= render partial: 'last_sync' %></span>
     <% end %>
-    <div id="last-sync" style="display: inline-block;">
-      <%= render partial: 'last_sync' %>
-    </div>
-    <%= link_to new_gig_path, class: "btn btn-primary pull-right" do %>
+    <%= link_to new_gig_path, class: "btn btn-primary" do %>
       <%= fa_icon 'plus' %> New
     <% end %>
   </div>
 </div>
+&nbsp;
 
 <div id="gigs-grid">
   <%= render partial: 'grid', locals: { gigs: @gigs } %>

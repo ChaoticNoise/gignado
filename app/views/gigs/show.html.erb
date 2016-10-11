@@ -29,7 +29,7 @@
         Call Time
       </div>
       <div class="col-xs-9 data-value">
-        <%= gig.call_time.localtime.strftime("%I:%M %p") %>
+        <%= gig.local_call_time.strftime("%I:%M %p") %>
       </div>
     </div>
     <% end %>
@@ -39,7 +39,7 @@
         Start Time
       </div>
       <div class="col-xs-9 data-value">
-        <%= gig.start_time.localtime.strftime("%b %-d, %Y %I:%M %p") %>
+        <%= gig.local_start_time.strftime("%b %-d, %Y %I:%M %p") %>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
         End Time
       </div>
       <div class="col-xs-9 data-value">
-        <%= gig.end_time.localtime.strftime("%b %-d, %Y %I:%M %p") %>
+        <%= gig.local_end_time.strftime("%b %-d, %Y %I:%M %p") %>
       </div>
     </div>
 

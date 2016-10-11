@@ -19,24 +19,26 @@ class GigoTest < ActiveSupport::TestCase
 
   test "start returns the gig_date" do
     gigo = GigOMatic::Gigo.new(@gigo_hash)
-    assert_equal( "#{gigo.start.month}/#{gigo.start.day}/#{gigo.start.year}", @gigo_hash['gig_date'])
+    start_time = gigo.timezone.utc_to_local(gigo.start)
+    assert_equal( "#{start_time.month}/#{start_time.day}/#{start_time.year}", @gigo_hash['gig_date'])
   end
 
   test "start returns now if gig_date is not a date" do
     @gigo_hash['gig_date'] = 'foo'
     gigo = GigOMatic::Gigo.new(@gigo_hash)
-    assert_equal(gigo.start.to_s, DateTime.now.to_s)
+    assert_equal(gigo.start.to_s, gigo.timezone.local_to_utc(Time.zone.now).to_s)
   end
 
   test "end returns the gig_date if no gig_enddate is given" do
     gigo = GigOMatic::Gigo.new(@gigo_hash)
-    assert_equal( "#{gigo.end.month}/#{gigo.end.day}/#{gigo.end.year}", @gigo_hash['gig_date'])
+    end_time = gigo.timezone.utc_to_local(gigo.end)
+    assert_equal( "#{end_time.month}/#{end_time.day}/#{end_time.year}", @gigo_hash['gig_date'])
   end
 
   test "end returns now if gig_date is not a date" do
     @gigo_hash['gig_date'] = 'foo'
     gigo = GigOMatic::Gigo.new(@gigo_hash)
-    assert_equal(gigo.end.to_s, DateTime.now.to_s)
+    assert_equal(gigo.end.to_s, gigo.timezone.local_to_utc(Time.zone.now).to_s)
   end
 
   test "details returns the gig_details" do

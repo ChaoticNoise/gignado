@@ -28,7 +28,7 @@
         <strong>Date</strong>
       </div>
       <div class="col-xs-9 data-value">
-        <%= rehearsal.start_time.localtime.strftime("%b %-d, %Y") %>
+        <%= rehearsal.local_start_time.strftime("%b %-d, %Y") %>
       </div>
     </div>
     <div class="row data">
@@ -36,9 +36,9 @@
         <strong>Time</strong>
       </div>
       <div class="col-xs-9 data-value">
-        <%= "Start: #{rehearsal.start_time.localtime.strftime("%l:%M %p")}" %>
+        <%= "Start: #{rehearsal.local_start_time.strftime("%l:%M %p")}" %>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <%= "End: #{rehearsal.end_time.localtime.strftime("%l:%M %p")}" %>
+        <%= "End: #{rehearsal.local_end_time.strftime("%l:%M %p")}" %>
       </div>
     </div>
     <div class="row data">

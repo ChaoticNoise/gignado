@@ -41,8 +41,24 @@ class Event < ApplicationRecord
     "#{base_url}/#{type.downcase.pluralize}/#{id}"
   end
 
+  def timezone
+    Timezone['America/Los_Angeles']
+  end
+
+  def local_call_time
+    self.timezone.utc_to_local(self.call_time)
+  end
+
+  def local_start_time
+    self.timezone.utc_to_local(self.start_time)
+  end
+
+  def local_end_time
+    self.timezone.utc_to_local(self.end_time)
+  end
+
   protected
-  
+
   def confirm_uid
     ical_event unless uid
   end

@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require tinymce
 //= require vendor/picker
 //= require vendor/picker.date
 //= require vendor/picker.time

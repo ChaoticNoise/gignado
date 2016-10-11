@@ -144,6 +144,6 @@
     Details
   </div>
   <div class="panel-body">
-    <%= gig.details %>
+    <%= gig.details.try(:html_safe) %>
   </div>
 </div>

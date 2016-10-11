@@ -89,7 +89,8 @@
       Details
     </div>
     <div class="panel-body">
-      <%= f.input :details, label: false, as: :text %>
+      <%= f.input :details, label: false, input_html: {class: 'tinymce'}, as: :text %>
+      <%= tinymce %>
     </div>
   </div>
 

@@ -5,28 +5,50 @@
 
   <div class="row">
     <div class="col-xs-6">
-      <div class="row">
-        <div class="col-sm-4">
-          <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Info
         </div>
-        <div class="col-sm-4">
-          <%= f.input :start_time, as: :hidden %>
-          <%= f.input :start_time_display, as: :string, label: 'Start Time', input_html: { class: 'timepicker' } %>
-        </div>
-        <div class="col-sm-4">
-          <%= f.input :end_time, as: :hidden %>
-          <%= f.input :end_time_display, as: :string, label: 'End Time', input_html: { class: 'timepicker' } %>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
+            </div>
+            <div class="col-sm-4">
+              <%= f.input :start_time, as: :hidden %>
+              <%= f.input :start_time_display, as: :string, label: 'Start Time', input_html: { class: 'timepicker' } %>
+            </div>
+            <div class="col-sm-4">
+              <%= f.input :end_time, as: :hidden %>
+              <%= f.input :end_time_display, as: :string, label: 'End Time', input_html: { class: 'timepicker' } %>
+            </div>
+          </div>
+          <%= f.input :location %>
         </div>
       </div>
-      <%= f.input :location %>
     </div>
     <div class="col-xs-6">
-      <%= f.input :status, collection: Rehearsal.statuses.keys.to_a %>
-      <%= f.input :rehearsal_pic_id, collection: Member.active.order(:first_name) %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Status
+        </div>
+        <div class="panel-body">
+          <%= f.input :status, collection: Rehearsal.statuses.keys.to_a %>
+          <%= f.input :rehearsal_pic_id, collection: Member.active.order(:first_name) %>
+        </div>
+      </div>
     </div>
   </div>
 
-  <%= f.input :details, as: :text %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Details
+    </div>
+    <div class="panel-body">
+      <%= f.input :details, label: false, input_html: {class: 'tinymce'}, as: :text %>
+      <%= tinymce %>
+    </div>
+  </div>
 
   <hr/>
 

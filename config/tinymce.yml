@@ -1,0 +1,5 @@
+menubar: false
+toolbar:
+  - styleselect | bold italic underline | bullist numlist outdent indent | link
+plugins:
+  - link

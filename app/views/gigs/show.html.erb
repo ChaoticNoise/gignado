@@ -6,121 +6,134 @@
 </div>
 &nbsp;
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Info
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Info
+      </div>
+      <div class="panel-body">
+
+        <%- if gig.call_time %>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Call Time
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.local_call_time.strftime("%I:%M %p") %>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Start Time
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.local_start_time.strftime("%b %-d, %Y %I:%M %p") %>
+          </div>
+        </div>
+
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            End Time
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.local_end_time.strftime("%b %-d, %Y %I:%M %p") %>
+          </div>
+        </div>
+
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Location
+          </div>
+          <div class="col-xs-9 data-value">
+            <a href="https://maps.google.com?q=<%= gig.location %>" target="_blank"><%= gig.location %></a>
+          </div>
+        </div>
+
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Payment
+          </div>
+          <div class="col-xs-9 data-value">
+            <%- if gig.payment.present? %><p>
+              <%= gig.payment %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <div class="row data">
-      <div class="col-xs-3 data-label">
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
         Status
       </div>
-      <div class="col-xs-9 data-value">
-        <span class="status status-<%= gig.status %>">
-          <%= fa_icon gig_status_to_icon(gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: gig.status %>
-        </span>
-        <%= gig.status %>
+      <div class="panel-body">
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Status
+          </div>
+          <div class="col-xs-9 data-value">
+            <span class="status status-<%= gig.status %>">
+              <%= fa_icon gig_status_to_icon(gig.status), data: {toggle: 'tooltip', placement:'bottom'}, title: gig.status %>
+            </span>
+            <%= gig.status %>
+          </div>
+        </div>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Confirm By
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.local_confirmation_deadline.strftime("%b %-d, %Y") if gig.confirmation_deadline %>
+          </div>
+        </div>
+
       </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        People In Charge
+      </div>
+      <div class="panel-body">
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Booker
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.booker %>
+          </div>
+        </div>
 
-    <%- if gig.call_time %>
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Call Time
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.local_call_time.strftime("%I:%M %p") %>
-      </div>
-    </div>
-    <% end %>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Day PIC
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.day_pic %>
+          </div>
+        </div>
 
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Start Time
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.local_start_time.strftime("%b %-d, %Y %I:%M %p") %>
-      </div>
-    </div>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Gig PIC
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.gig_pic %>
+          </div>
+        </div>
 
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        End Time
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.local_end_time.strftime("%b %-d, %Y %I:%M %p") %>
-      </div>
-    </div>
-
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Location
-      </div>
-      <div class="col-xs-9 data-value">
-        <a href="https://maps.google.com?q=<%= gig.location %>" target="_blank"><%= gig.location %></a>
-      </div>
-    </div>
-
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Confirm By
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.local_confirmation_deadline.strftime("%b %-d, %Y") if gig.confirmation_deadline %>
-      </div>
-    </div>
-
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Payment
-      </div>
-      <div class="col-xs-9 data-value">
-        <%- if gig.payment.present? %><p>
-          <%= gig.payment %></p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-      People In Charge
-  </div>
-  <div class="panel-body">
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Booker
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.booker %>
-      </div>
-    </div>
-
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Day PIC
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.day_pic %>
-      </div>
-    </div>
-
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Gig PIC
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.gig_pic %>
-      </div>
-    </div>
-
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Bus PIC
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= gig.bus_pic %>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Bus PIC
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= gig.bus_pic %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

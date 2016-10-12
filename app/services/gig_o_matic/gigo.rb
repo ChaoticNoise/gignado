@@ -40,6 +40,10 @@ class GigOMatic::Gigo < OpenStruct
     self.gig_status.to_i
   end
 
+  def payment
+    self.gig_paid
+  end
+
   def key
     self.gk
   end

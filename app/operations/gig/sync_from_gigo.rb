@@ -21,6 +21,7 @@ class Gig
       gig.location = gigo.location
       gig.details = gigo.details
       gig.status = gigo.status
+      gig.payment = gigo.payment
       gig.synced_at = DateTime.now
       fix_confirmation_deadline(gig)
       gig.save

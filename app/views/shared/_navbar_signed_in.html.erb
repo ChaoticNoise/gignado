@@ -16,12 +16,12 @@
       <%= render_navigation renderer: :bootstrap_renderer %>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <p class="navbar-text">
+          <%= link_to edit_member_path(current_member) do %>
+            <%= image_tag(current_member.image_url, class: 'img-circle', id: 'member-img') %>
             <%= current_member.display_name %>
-          </p>
-          <%= image_tag(current_member.image_url, class: 'img-circle', id: 'member-img') %>
+          <% end %>
         </li>
-      </ul>
+      </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>

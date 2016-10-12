@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           Info
@@ -16,18 +16,18 @@
             </div>
             <div class="col-sm-4">
               <%= f.input :start_time, as: :hidden %>
-              <%= f.input :start_time_display, as: :string, label: 'Start Time', input_html: { class: 'timepicker' } %>
+              <%= f.input :start_time_display, as: :string, label: 'Start', input_html: { class: 'timepicker' } %>
             </div>
             <div class="col-sm-4">
               <%= f.input :end_time, as: :hidden %>
-              <%= f.input :end_time_display, as: :string, label: 'End Time', input_html: { class: 'timepicker' } %>
+              <%= f.input :end_time_display, as: :string, label: 'End', input_html: { class: 'timepicker' } %>
             </div>
           </div>
           <%= f.input :location %>
         </div>
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           Status

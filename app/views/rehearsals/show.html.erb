@@ -7,54 +7,67 @@
 </div>
 &nbsp;
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Info
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Info
+      </div>
+      <div class="panel-body">
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Date
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= date_range_helper(rehearsal.local_start_time, rehearsal.local_end_time) %>
+          </div>
+        </div>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Time
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= "Start: #{rehearsal.local_start_time.strftime("%l:%M %p")}" %>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <%= "End: #{rehearsal.local_end_time.strftime("%l:%M %p")}" %>
+          </div>
+        </div>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Location
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= rehearsal.location %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <div class="row data">
-      <div class="col-xs-3 data-label">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
         Status
       </div>
-      <div class="col-xs-9 data-value">
-        <span class="status status-<%= rehearsal.status %>">
-          <%= fa_icon rehearsal_status_to_icon(rehearsal.status), data: {toggle: 'tooltip', placement:'bottom'}, title: rehearsal.status %>
-        </span>
-        <%= rehearsal.status.humanize %>
-      </div>
-    </div>
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Date
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= date_range_helper(rehearsal.local_start_time, rehearsal.local_end_time) %>
-      </div>
-    </div>
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Time
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= "Start: #{rehearsal.local_start_time.strftime("%l:%M %p")}" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <%= "End: #{rehearsal.local_end_time.strftime("%l:%M %p")}" %>
-      </div>
-    </div>
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Location
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= rehearsal.location %>
-      </div>
-    </div>
-    <div class="row data">
-      <div class="col-xs-3 data-label">
-        Rehearsal PIC
-      </div>
-      <div class="col-xs-9 data-value">
-        <%= rehearsal.rehearsal_pic %>
+      <div class="panel-body">
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Status
+          </div>
+          <div class="col-xs-9 data-value">
+            <span class="status status-<%= rehearsal.status %>">
+              <%= fa_icon rehearsal_status_to_icon(rehearsal.status), data: {toggle: 'tooltip', placement:'bottom'}, title: rehearsal.status %>
+            </span>
+            <%= rehearsal.status.humanize %>
+          </div>
+        </div>
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Rehearsal PIC
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= rehearsal.rehearsal_pic %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -45,6 +45,10 @@ class Event < ApplicationRecord
     Timezone['America/Los_Angeles']
   end
 
+  def confirmation_deadline
+    self.read_attribute(:confirmation_deadline) || self.start_time
+  end
+
   def local_call_time
     self.timezone.utc_to_local(self.call_time)
   end
@@ -57,7 +61,7 @@ class Event < ApplicationRecord
     self.timezone.utc_to_local(self.end_time)
   end
 
-  def local_confiramtion_deadline
+  def local_confirmation_deadline
     self.timezone.utc_to_local(self.confirmation_deadline)
   end
 

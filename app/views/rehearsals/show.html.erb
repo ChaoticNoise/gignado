@@ -14,7 +14,7 @@
   <div class="panel-body">
     <div class="row data">
       <div class="col-xs-3 data-label">
-        <strong>Status</strong>
+        Status
       </div>
       <div class="col-xs-9 data-value">
         <span class="status status-<%= rehearsal.status %>">
@@ -25,15 +25,15 @@
     </div>
     <div class="row data">
       <div class="col-xs-3 data-label">
-        <strong>Date</strong>
+        Date
       </div>
       <div class="col-xs-9 data-value">
-        <%= rehearsal.local_start_time.strftime("%b %-d, %Y") %>
+        <%= date_range_helper(rehearsal.local_start_time, rehearsal.local_end_time) %>
       </div>
     </div>
     <div class="row data">
       <div class="col-xs-3 data-label">
-        <strong>Time</strong>
+        Time
       </div>
       <div class="col-xs-9 data-value">
         <%= "Start: #{rehearsal.local_start_time.strftime("%l:%M %p")}" %>
@@ -43,7 +43,7 @@
     </div>
     <div class="row data">
       <div class="col-xs-3 data-label">
-        <strong>Location</strong>
+        Location
       </div>
       <div class="col-xs-9 data-value">
         <%= rehearsal.location %>
@@ -51,7 +51,7 @@
     </div>
     <div class="row data">
       <div class="col-xs-3 data-label">
-        <strong>Rehearsal PIC</strong>
+        Rehearsal PIC
       </div>
       <div class="col-xs-9 data-value">
         <%= rehearsal.rehearsal_pic %>

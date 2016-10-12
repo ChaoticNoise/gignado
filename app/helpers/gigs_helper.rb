@@ -12,4 +12,5 @@ module GigsHelper
       'exclamation-circle'
     end
   end
+
 end

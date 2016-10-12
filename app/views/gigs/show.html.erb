@@ -14,32 +14,35 @@
       </div>
       <div class="panel-body">
 
+
+        <div class="row data">
+          <div class="col-xs-3 data-label">
+            Date
+          </div>
+          <div class="col-xs-9 data-value">
+            <%= date_range_helper(gig.local_start_time, gig.local_end_time) %>
+          </div>
+        </div>
+
         <%- if gig.call_time %>
         <div class="row data">
           <div class="col-xs-3 data-label">
             Call Time
           </div>
           <div class="col-xs-9 data-value">
-            <%= gig.local_call_time.strftime("%I:%M %p") %>
+            <%= gig.local_call_time.strftime("%l:%M %p") %>
           </div>
         </div>
         <% end %>
 
         <div class="row data">
           <div class="col-xs-3 data-label">
-            Start Time
+            Set Time
           </div>
           <div class="col-xs-9 data-value">
-            <%= gig.local_start_time.strftime("%b %-d, %Y %I:%M %p") %>
-          </div>
-        </div>
-
-        <div class="row data">
-          <div class="col-xs-3 data-label">
-            End Time
-          </div>
-          <div class="col-xs-9 data-value">
-            <%= gig.local_end_time.strftime("%b %-d, %Y %I:%M %p") %>
+            <%= "Start: #{gig.local_start_time.strftime("%l:%M %p")}" %>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <%= "End: #{gig.local_end_time.strftime("%l:%M %p")}" %>
           </div>
         </div>
 
@@ -88,7 +91,8 @@
             Confirm By
           </div>
           <div class="col-xs-9 data-value">
-            <%= gig.local_confirmation_deadline.strftime("%b %-d, %Y") if gig.confirmation_deadline %>
+            <%= gig.local_confirmation_deadline.strftime("%^a, %b %-d, %Y") %>
+            (in <%= distance_of_time_in_words(gig.timezone.utc_to_local(Time.zone.now), gig.local_confirmation_deadline) %>)
           </div>
         </div>
 

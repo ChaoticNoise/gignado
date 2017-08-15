@@ -25,5 +25,6 @@
 /.ruby-env
 
 .byebug_history
+.idea
 
 coverage

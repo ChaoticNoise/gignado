@@ -9,7 +9,6 @@ class Promotion < ApplicationRecord
     self.new(
         event_id: event.id,
         title: event.title,
-        details: event.details,
         location_display: event.location,
         location_url: event.location_url,
         start_time: event.start_time,

@@ -15,7 +15,6 @@ class PromotionTest < ActiveSupport::TestCase
 
     assert_equal(promotion.event_id, event.id)
     assert_equal(promotion.title, event.title)
-    assert_equal(promotion.details, event.details)
     assert_equal(promotion.location_display, event.location)
     assert_equal(promotion.location_url, event.location_url)
     assert_equal(promotion.start_time, event.start_time)

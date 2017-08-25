@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :events, :only => [:index]
+  resources :events, :only => [:index] do
+    resources :promotions, :only => [:new]
+  end
   resources :gigs do
     collection do
       get 'sync'
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :rehearsals
+  resources :promotions
 
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks"}
   resources :members do
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     namespace 'v1' do
+      resources :promotions, only: [:index]
       resources :bots, only: [] do
         collection do
           post :slack

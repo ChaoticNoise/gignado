@@ -88,6 +88,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    dalli (2.7.6)
     declarative (0.0.9)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
@@ -205,6 +206,7 @@ GEM
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -397,6 +399,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   codacy-coverage
   coffee-rails (~> 4.2)
+  dalli (~> 2.7.6)
   devise (~> 4.2)
   dry-types
   dry-validation
@@ -412,6 +415,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mechanize (~> 2.7.4)
+  memcachier
   minitest (~> 5.8)
   minitest-reporters (~> 1.1)
   omniauth-google-oauth2 (~> 0.4.1)

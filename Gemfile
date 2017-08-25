@@ -67,6 +67,10 @@ gem 'simple_form', '~> 3.3'
 gem 'timezone', '~> 1.0'
 gem 'tinymce-rails', '~> 4.4'
 
+# Cache
+gem 'dalli', '~> 2.7.6'
+gem 'memcachier'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

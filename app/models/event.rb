@@ -3,6 +3,8 @@ require 'date_time_util'
 class Event < ApplicationRecord
   include DateTimeUtil
 
+  has_one :promotion
+
   serialize :data, HashSerializer
 
   store :data, accessors: [ :uid, :points ]
@@ -63,6 +65,10 @@ class Event < ApplicationRecord
 
   def local_confirmation_deadline
     self.timezone.utc_to_local(self.confirmation_deadline)
+  end
+
+  def location_url
+    "https://maps.google.com?q=#{self.location}"
   end
 
   protected

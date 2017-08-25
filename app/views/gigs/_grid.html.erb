@@ -13,9 +13,21 @@
               <%= gig.local_start_time.strftime("%^a, %b %-d, %Y") %>
             <% end %>
           </td>
-          <td class="col-xs-10">
+          <td class="col-xs-8">
             <%= link_to gig do %>
               <%= gig.title %>
+            <% end %>
+          </td>
+          <td class="col-xs-2">
+
+            <% if gig.promotion %>
+              <%= link_to edit_promotion_path(gig.promotion) do %>
+                  Promoted
+              <% end %>
+            <% elsif gig.confirmed? %>
+              <%= link_to new_event_promotion_path(gig) do %>
+                Promote
+              <% end %>
             <% end %>
           </td>
         </tr>

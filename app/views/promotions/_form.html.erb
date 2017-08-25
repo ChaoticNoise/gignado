@@ -1,0 +1,79 @@
+<%= simple_form_for(@form) do |f| %>
+  <% if @form.errors.messages.any? %>
+    <%= render partial: 'shared/alerts', locals: { type: 'danger', text: "#{pluralize(@form.errors.messages.count, 'error')} prohibited this promotion from being saved." } %>
+  <% end %>
+
+  <%= f.input :title %>
+  <%= f.input :url %>
+
+  <%= f.input :start_time, as: :hidden %>
+  <%= f.input :end_time, as: :hidden %>
+  <%= f.input :event_id, as: :hidden %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Info
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.input :time_display %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :start_date_display, as: :string, label: 'Date', input_html: { class: 'datepicker' } %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :multi_day, as: :boolean %>
+              <%= f.input :end_date_display, as: :string, label: 'End Date', input_html: { class: 'datepicker' } %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :start_time_display, as: :string, label: 'Start Time', input_html: { class: 'timepicker' } %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :end_time_display, as: :string, label: 'End Time', input_html: { class: 'timepicker' } %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Location
+        </div>
+        <div class="panel-body">
+          <%= f.input :location_display %>
+          <%= f.input :location_url %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Details
+    </div>
+    <div class="panel-body">
+      <%= f.input :details, label: false, input_html: {class: 'tinymce'}, as: :text %>
+      <%= tinymce %>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="pull-right">
+    <%= link_to 'Cancel', gigs_path, class: "btn" %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

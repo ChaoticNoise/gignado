@@ -68,7 +68,8 @@ class Event < ApplicationRecord
   end
 
   def location_url
-    "https://maps.google.com?q=#{self.location}"
+    query = CGI.escape(self.location)
+    "https://www.google.com/maps/search/#{query}"
   end
 
   protected

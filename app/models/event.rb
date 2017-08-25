@@ -12,7 +12,7 @@ class Event < ApplicationRecord
 
   before_save :confirm_uid
 
-  scope :upcoming, -> { where("end_time > ?", Time.zone.today) }
+  scope :upcoming, -> { where("end_time > ?", Time.zone.now) }
   scope :today, -> { where("end_time > ? AND start_time < ?", Time.zone.today, 1.day.from_now.beginning_of_day) }
 
   def self.by_title(query)

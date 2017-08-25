@@ -3,7 +3,7 @@ class Promotion < ApplicationRecord
   after_save :expire_upcoming_cache
   after_destroy :expire_upcoming_cache
 
-  scope :upcoming, -> { where("end_time > ?", Time.zone.today).order(:start_time) }
+  scope :upcoming, -> { where("end_time > ?", Time.zone.now).order(:start_time) }
 
   def self.new_from_event(event)
     self.new(
@@ -17,7 +17,7 @@ class Promotion < ApplicationRecord
   end
 
   def self.upcoming_cached
-    Rails.cache.fetch('Promotion.upcoming', expires_in: 12.hours) { self.upcoming }
+    Rails.cache.fetch('Promotion.upcoming', expires_in: 1.hours) { self.upcoming }
   end
 
   def expire_upcoming_cache

@@ -30,23 +30,23 @@ class GigForm < Reform::Form
       config.messages_file = 'config/error_messages.yml'
       option :form
 
-      def before_set_date?(value)
+      def before_set_date?(_)
         form.confirmation_deadline.to_date <= form.start_time.to_date
       end
 
-      def after_set_date?(value)
+      def after_set_date?(_)
         form.start_time.to_date <= form.end_time.to_date
       end
 
-      def after_set_time?(value)
-        if form.start_time.to_date == form.start_time.to_date
+      def after_set_time?(_)
+        if form.start_time.to_date == form.end_time.to_date
           form.start_time.to_time <= form.end_time.to_time
         else
           true
         end
       end
 
-      def before_set_time?(value)
+      def before_set_time?(_)
         form.start_time.to_time >= form.call_time.to_time
       end
     end

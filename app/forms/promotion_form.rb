@@ -23,12 +23,12 @@ class PromotionForm < Reform::Form
       config.messages_file = 'config/error_messages.yml'
       option :form
 
-      def after_set_date?(value)
+      def after_set_date?(_)
         form.start_time.to_date <= form.end_time.to_date
       end
 
-      def after_set_time?(value)
-        if form.start_time.to_date == form.start_time.to_date
+      def after_set_time?(_)
+        if form.start_time.to_date == form.end_time.to_date
           form.start_time.to_time <= form.end_time.to_time
         else
           true

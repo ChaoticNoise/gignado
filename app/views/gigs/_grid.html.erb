@@ -22,10 +22,11 @@
 
             <% if gig.promotion %>
               <%= link_to edit_promotion_path(gig.promotion) do %>
-                  Promoted
+                <%= fa_icon 'check-circle' %>
+                Promoted
               <% end %>
             <% elsif gig.confirmed? %>
-              <%= link_to new_event_promotion_path(gig) do %>
+              <%= link_to new_event_promotion_path(gig), html_options = {class: 'btn btn-primary btn-sm'} do %>
                 Promote
               <% end %>
             <% end %>

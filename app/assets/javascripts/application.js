@@ -19,4 +19,5 @@
 //= require vendor/picker.date
 //= require vendor/picker.time
 //= require vendor/strftime
+//= require vendor/js.cookie
 //= require_tree .

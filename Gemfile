@@ -65,7 +65,7 @@ gem 'dry-validation'
 gem 'dry-types'
 gem 'simple_form', '~> 3.3'
 gem 'timezone', '~> 1.0'
-gem 'tinymce-rails', '~> 4.4'
+gem 'tinymce-rails', '~> 4.6.6'
 
 # Cache
 gem 'dalli', '~> 2.7.6'

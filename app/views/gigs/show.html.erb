@@ -86,6 +86,8 @@
             <%= gig.status %>
           </div>
         </div>
+
+        <%- if gig.potential? %>
         <div class="row data">
           <div class="col-xs-3 data-label">
             Confirm By
@@ -95,6 +97,7 @@
             (in <%= distance_of_time_in_words(gig.timezone.utc_to_local(Time.zone.now), gig.local_confirmation_deadline) %>)
           </div>
         </div>
+        <%- end %>
 
       </div>
     </div>

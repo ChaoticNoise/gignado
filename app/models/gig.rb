@@ -12,6 +12,6 @@ class Gig < Event
   scope :confirmed, -> { where(status: Gig.statuses[:confirmed]) }
 
   def self.last_sync
-    where("synced_at IS NOT NULL").order("synced_at DESC").pluck(:synced_at).first
+    self.last_date_value(:synced_at)
   end
 end

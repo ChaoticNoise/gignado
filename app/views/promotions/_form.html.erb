@@ -4,44 +4,22 @@
   <% end %>
 
   <%= f.input :title %>
-  <%= f.input :url %>
+  <%= f.input :url, label: 'URL Link' %>
 
-  <%= f.input :start_time, as: :hidden %>
-  <%= f.input :end_time, as: :hidden %>
   <%= f.input :event_id, as: :hidden %>
 
   <div class="row">
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Info
+          When
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-xs-12">
-              <%= f.input :time_display %>
+              <%= f.input :time_display, label: 'Display' %>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-xs-6">
-              <%= f.input :start_date_display, as: :string, label: 'Date', input_html: { class: 'datepicker' } %>
-            </div>
-            <div class="col-xs-6">
-              <%= f.input :multi_day, as: :boolean %>
-              <%= f.input :end_date_display, as: :string, label: 'End Date', input_html: { class: 'datepicker' } %>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-6">
-              <%= f.input :start_time_display, as: :string, label: 'Start Time', input_html: { class: 'timepicker' } %>
-            </div>
-            <div class="col-xs-6">
-              <%= f.input :end_time_display, as: :string, label: 'End Time', input_html: { class: 'timepicker' } %>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
@@ -49,24 +27,13 @@
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Location
+          Where
         </div>
         <div class="panel-body">
-          <%= f.input :location_display %>
-          <%= f.input :location_url %>
+          <%= f.input :location_display, label: 'Display' %>
+          <%= f.input :location_url, label: 'URL Link' %>
         </div>
       </div>
-    </div>
-  </div>
-
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Details
-    </div>
-    <div class="panel-body">
-      <%= f.input :details, label: false, input_html: {class: 'tinymce'}, as: :text %>
-      <%= tinymce %>
     </div>
   </div>
 

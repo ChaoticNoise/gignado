@@ -19,13 +19,9 @@ class PromotionsControllerTest < ActionController::TestCase
       post :create, params: { promotion: {
         event_id: @promotion.event_id,
         time_display: "Now",
+        title: @promotion.title,
         url: @promotion.url, location_url: @promotion.location_url,
-        details: @promotion.details, end_time: @promotion.end_time, location_display: @promotion.location_display,
-        start_time: @promotion.start_time, title: @promotion.title,
-        start_date_display: @promotion.start_time.to_date,
-        start_time_display: @promotion.start_time.to_time,
-        end_date_display: @promotion.end_time.to_date,
-        end_time_display: @promotion.end_time.to_time } }
+        location_display: @promotion.location_display } }
     end
 
     assert_redirected_to gigs_path
@@ -41,12 +37,8 @@ class PromotionsControllerTest < ActionController::TestCase
       event_id: @promotion.event_id,
       time_display: "Now",
       url: @promotion.url, location_url: @promotion.location_url,
-      details: @promotion.details, end_time: @promotion.end_time, location_display: @promotion.location_display,
-      start_time: @promotion.start_time, title: @promotion.title,
-      start_date_display: @promotion.start_time.to_date,
-      start_time_display: @promotion.start_time.to_time,
-      end_date_display: @promotion.end_time.to_date,
-      end_time_display: @promotion.end_time.to_time } }
+      location_display: @promotion.location_display,
+      title: @promotion.title } }
     assert_redirected_to gigs_path
   end
 

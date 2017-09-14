@@ -37,8 +37,6 @@ FactoryGirl.define do
   factory :promotion do
     title { Faker::Lorem.sentence }
     url { Faker::Internet.url }
-    start_time Time.now() + 1.day
-    end_time Time.now() + 1.day + 3.hours
     time_display { Faker::Lorem.sentence }
     location_display {Faker::Address.street_address}
     location_url { Faker::Internet.url }

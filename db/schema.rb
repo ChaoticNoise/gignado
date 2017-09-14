@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815014805) do
+ActiveRecord::Schema.define(version: 20170914010223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", id: :serial, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["member_id"], name: "index_attendances_on_member_id"
+  end
 
   create_table "events", id: :serial, force: :cascade do |t|
     t.string "type"
@@ -71,12 +80,9 @@ ActiveRecord::Schema.define(version: 20170815014805) do
   create_table "promotions", force: :cascade do |t|
     t.string "title"
     t.string "url"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.string "time_display"
     t.string "location_display"
     t.string "location_url"
-    t.text "details"
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

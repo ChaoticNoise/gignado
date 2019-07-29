@@ -6,10 +6,11 @@ class Promotion < ApplicationRecord
   scope :upcoming, -> { joins(:event).where("events.end_time > ?", Time.zone.now).order("events.start_time") }
 
   def self.new_from_event(event)
+    timezone = Timezone['America/Los_Angeles']
     self.new(
         event_id: event.id,
         title: event.title,
-        time_display: format_time_display(event.start_time.try(:localtime), event.end_time.try(:localtime)),
+        time_display: format_time_display(timezone.utc_to_local(event.start_time), timezone.utc_to_local(event.end_time)),
         location_display: event.location,
         location_url: event.location_url
     )

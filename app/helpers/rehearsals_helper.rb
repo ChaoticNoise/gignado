@@ -1,8 +1,8 @@
 module RehearsalsHelper
   def rehearsal_status_to_icon(status)
-    status = status.downcase.to_sym
+    status = status.to_s.downcase.to_sym
     case status
-    when :lets_play
+    when :confirmed
       'check-circle'
     when :canceled
       'times-circle'

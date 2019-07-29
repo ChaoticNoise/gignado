@@ -16,6 +16,17 @@ GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
 the one Google is complaining about to the gignado project in the google developers
 console.
 
+### Dependencies Install
+1. Run bundler
+```
+bundle install
+```
+2. Create database
+```
+bundle exec rake db:create
+bundle exec rake db:schema:load
+```
+
 ## Testing
 ### Test with Color
 Install colordiff in order to allow colors in minitest using the purdytest gem

@@ -7,8 +7,13 @@ class Gig
 
     def update
       @gigos.each do |gigo|
-        gig = Gig.find_or_initialize_by(gigo_key: gigo.key)
-        sync_gig_from_gigo(gig, gigo)
+        if gigo.title.to_s.downcase =~ /rehearsal/
+          rehearsal = Rehearsal.find_or_initialize_by(gigo_key: gigo.key)
+          sync_rehearsal_from_gigo(rehearsal, gigo)
+        else
+          gig = Gig.find_or_initialize_by(gigo_key: gigo.key)
+          sync_gig_from_gigo(gig, gigo)
+        end
       end
     end
 
@@ -27,6 +32,19 @@ class Gig
       gig.save
     rescue => e
       Rails.logger.warn("Gig::SyncWithGigo - could not sync #{gigo.title}\n#{e.message}")
+    end
+
+    def sync_rehearsal_from_gigo(rehearsal, gigo)
+      rehearsal.title = gigo.title
+      rehearsal.start_time = gigo.start
+      rehearsal.end_time = gigo.end
+      grehearsalig.location = gigo.location
+      rehearsal.details = gigo.details
+      rehearsal.status = gigo.status      
+      rehearsal.synced_at = DateTime.now
+      rehearsal.save
+    rescue => e
+      Rails.logger.warn("Gig::SyncWithGigo - could not sync #{rehearsal.title}\n#{e.message}")
     end
 
     # Fix Edge case

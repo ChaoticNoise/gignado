@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.3'
+gem 'rails', '5.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '0.21.0'
 gem 'rails_12factor', group: :production
@@ -47,9 +47,6 @@ gem 'omniauth-google-oauth2', '~> 0.4.1'
 # Calendar
 gem 'icalendar', '~> 2.0'
 
-# Assigns has been removed from rails 5
-gem 'rails-controller-testing', group: :test
-
 # Test Coverage analysis tool. Used for Codacy metrics
 gem 'simplecov', require: false, group: :test
 gem 'codacy-coverage', require: false
@@ -63,7 +60,7 @@ gem 'reform', '>= 2.2.0'
 gem 'reform-rails'
 gem 'dry-validation', '~> 0.11.0'
 gem 'dry-types', '~> 0.11.1'
-gem 'simple_form', '~> 3.3'
+gem 'simple_form', '~> 4.1.0'
 gem 'timezone', '~> 1.0'
 gem 'tinymce-rails', '~> 4.6.6'
 

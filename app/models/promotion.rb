@@ -9,7 +9,7 @@ class Promotion < ApplicationRecord
     self.new(
         event_id: event.id,
         title: event.title,
-        time_display: format_time_display(event.start_time, event.end_time),
+        time_display: format_time_display(event.start_time.try(:localtime), event.end_time.try(:localtime)),
         location_display: event.location,
         location_url: event.location_url
     )

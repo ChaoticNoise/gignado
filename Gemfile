@@ -42,7 +42,7 @@ gem 'puma'
 
 # Authentication
 gem 'devise', '~> 4.4'
-gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'omniauth-google-oauth2', '~> 0.7.0'
 
 # Calendar
 gem 'icalendar', '~> 2.0'

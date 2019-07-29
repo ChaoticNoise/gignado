@@ -30,6 +30,13 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    member.destroy
+    redirect_to members_url, notice: 'Member was deleted.'
+  end
+
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def member

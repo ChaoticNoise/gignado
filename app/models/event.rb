@@ -28,7 +28,8 @@ class Event < ApplicationRecord
   def self.last_date_value(date_attribute)
     _last = where("#{date_attribute} IS NOT NULL").order("#{date_attribute} DESC").first
     #_last.timezone.utc_to_local(_last.send(date_attribute))
-    _last.send(date_attribute)
+
+    _last.send(date_attribute) if _last
   end
 
   def ical_event

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :promotions
 
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks"}
+  match 'members/:id' => 'members#destroy', :via => :delete, :as => :destroy_member
   resources :members do
     collection do
       get 'query'

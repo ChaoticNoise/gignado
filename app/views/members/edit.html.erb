@@ -54,6 +54,10 @@
     </div>
   </div>
 
+  <div class="pull-left">
+    <%= link_to 'Delete', destroy_member_path(member), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+
   <div class="pull-right">
     <%= link_to 'Cancel', members_path, class: "btn" %>
     <%= f.button :button, class: "btn btn-primary" do %>

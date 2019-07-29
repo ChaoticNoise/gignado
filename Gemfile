@@ -41,7 +41,7 @@ gem 'mechanize', '~> 2.7.4'
 gem 'puma'
 
 # Authentication
-gem 'devise', '~> 4.4'
+gem 'devise', '~> 4.6.2'
 gem 'omniauth-google-oauth2', '~> 0.7.0'
 
 # Calendar

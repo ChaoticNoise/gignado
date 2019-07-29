@@ -8,7 +8,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.1.3'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '0.21.0'
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -41,7 +41,7 @@ gem 'mechanize', '~> 2.7.4'
 gem 'puma'
 
 # Authentication
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.4'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 # Calendar
@@ -61,8 +61,8 @@ gem 'active_job_status', git: 'https://github.com/cdale77/active_job_status.git'
 # Form Gems
 gem 'reform', '>= 2.2.0'
 gem 'reform-rails'
-gem 'dry-validation'
-gem 'dry-types'
+gem 'dry-validation', '~> 0.11.0'
+gem 'dry-types', '~> 0.11.1'
 gem 'simple_form', '~> 3.3'
 gem 'timezone', '~> 1.0'
 gem 'tinymce-rails', '~> 4.6.6'

@@ -24,7 +24,7 @@ class Promotion < ApplicationRecord
         "#{start_time} - #{end_time}"
       else
         start_time = start_time.strftime("%b %-d")
-        end_time = end_time.strftime("%b")
+        end_time = end_time.strftime("%-d")
         "#{start_time} - #{end_time}"
       end
     else

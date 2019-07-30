@@ -8,10 +8,15 @@
       <%= f.input :on_break, as: :boolean, wrapper_html: { class: 'pull-left'} %>
       <%= f.input :other, as: :boolean, wrapper_html: { class: 'pull-left'} %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= f.input :patches, as: :boolean, wrapper_html: { class: 'pull-left'} %>
       <%= f.input :bus_drivers, as: :boolean, wrapper_html: { class: 'pull-left'} %>
       <%= f.input :section_leads, as: :boolean, wrapper_html: { class: 'pull-left'} %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to new_member_path, class: "btn btn-primary pull-right" do %>
+        <%= fa_icon 'plus' %> New
+      <% end %>
     </div>
   </div>
 

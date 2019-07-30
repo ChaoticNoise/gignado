@@ -12,9 +12,27 @@ class MembersController < ApplicationController
     end
   end
 
+  # GET /members/new
+  def new
+    @form = MemberForm.new(member)
+  end
+
   # GET /members/1/edit
   def edit
     @form = MemberForm.new(member)
+  end
+
+  # POST /members
+  # POST /members.json
+  def create
+    @form = MemberForm.new(member)
+
+    if @form.validate(params[:member])
+      @form.save
+      redirect_to members_url, notice: 'Member was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /members/1
@@ -40,7 +58,11 @@ class MembersController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def member
-    @member ||= Member.find(params[:id])
+    @member ||= if params[:id]
+      Member.find(params[:id])
+    else
+      Member.new
+    end
   end
 
   def query_form

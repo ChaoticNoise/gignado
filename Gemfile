@@ -37,7 +37,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # use forked http-cookie to preserve gig-o-matic double-quotes in cookie values
 gem 'http-cookie', git: 'https://github.com/breadbeard/http-cookie.git', ref: 'ba63c233036389087edc49c0c1293744e1919ae1'
 # Used for interacting with gig-o-matic via it's UI
-gem 'mechanize', '~> 2.7.4'
+gem 'mechanize', '~> 2.7.7'
 
 gem 'puma'
 
